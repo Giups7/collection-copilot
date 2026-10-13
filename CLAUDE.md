@@ -4,7 +4,7 @@ Assistente AI di analisi in sola lettura per Collection / NPL. Il codice calcola
 
 ## Dove stanno le cose
 
-- Analisi (ATF): Confluence, spazio COLLAI, sito giups7.atlassian.net, cloudId `cfd70809-cef8-419e-b240-8a124797ebde`. Pagina madre 655361; decision log 786469; tool 917509; KPI e metodologia 688146; UI e blocchi 163976; Copilot API 655379; agente 393246; note di rilascio 1605633; manuale d'uso 1638401.
+- Analisi (ATF): Confluence, spazio COLLAI, sito giups7.atlassian.net, cloudId `cfd70809-cef8-419e-b240-8a124797ebde`. Pagina madre 655361; decision log 786469; tool 917509; KPI e metodologia 688146; UI e blocchi 163976; Copilot API 655379; agente 393246; note di rilascio 1605633; manuale d'uso 1638401; guida utente 1736706.
 - Backlog: Jira, progetto KAN. Epic KAN-1…11 (E1…E11), story KAN-12…62. Transizioni: To Do 11, In Progress 21, Ready to merge 31, Test 41, Done 51.
 - Codice: questo repo, https://github.com/Giups7/collection-copilot (`main`). Moduli e stato nel `README.md`.
 

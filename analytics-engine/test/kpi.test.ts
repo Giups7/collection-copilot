@@ -180,7 +180,8 @@ describe('get_collector_performance', () => {
   it('RR_90 per recuperatore x fascia, esclusi per motivo, valido contro lo schema', () => {
     const out = getCollectorPerformance(dataset, { kpi: 'RR_90', minSample: 2 });
     expectValidToolOutput('get_collector_performance', out);
-    expect(out.cells).toEqual([
+    // valori semplici e conteggi (KAN-36); ci/index/label sono coperti in mix.test.ts
+    expect(out.cells.map(({ collector, fascia, n, exposure, value, label }) => ({ collector, fascia, n, exposure, value, label }))).toEqual([
       { collector: 'ALFA', fascia: '1P', n: 4, exposure: 7000, value: 0.2, label: 'IN_LINE' },
       { collector: 'ALFA', fascia: '2P', n: 1, exposure: 1000, value: 0.2, label: 'INSUFFICIENT_DATA' }, // C1: 2026-03-01 + 90 <= asOf
       { collector: 'BETA', fascia: '1P', n: 2, exposure: 3000, value: 0.5, label: 'IN_LINE' },

@@ -19,5 +19,16 @@ export {
   type CollectorPerformanceInput,
   type PerformanceCell,
   type PerformanceLabel,
+  type ResultMeta,
 } from './performance.ts';
+export {
+  INDEX_KPIS,
+  DEFAULT_RESAMPLES,
+  analyzeCollectors,
+  wilsonInterval,
+  type IndexRow,
+  type MixAnalysis,
+  type MixOptions,
+} from './mix.ts';
+export { rankCollectorsByBand, separationRanks, type BandRanking, type CollectorRanking, type RankingItem } from './ranking.ts';
 export type { Affido, Dataset, Esito, Incasso, IncassoSenzaAffido, Scope, Segmento } from './types.ts';
