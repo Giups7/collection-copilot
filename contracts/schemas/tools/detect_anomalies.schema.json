@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/detect_anomalies.schema.json",
+  "title": "detect_anomalies",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["ANOMALY_PERFORMANCE_DROP", "ANOMALY_MISSING_REPORTS", "ANOMALY_PAYMENT_OUTLIER", "TREND_DECLINE"] }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "anomalies"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "anomalies": {
+          "type": "array",
+          "items": { "$ref": "../blocks/insight-list.schema.json#/properties/items/items" }
+        },
+        "dataSourceId": { "type": "string", "description": "Dettaglio dei record coinvolti, solo per il frontend." }
+      }
+    }
+  }
+}

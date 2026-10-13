@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_portfolio_distribution.schema.json",
+  "title": "get_portfolio_distribution",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "required": ["dimension"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "dimension": { "enum": ["FASCIA", "PRODUCT", "CLASSIFICATION", "REGION", "EXPOSURE_CLASS", "COLLECTOR"] },
+        "measure": { "enum": ["COUNT", "EXPOSURE", "RECOVERED"], "default": "COUNT" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "dimension", "measure", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "dimension": { "type": "string" },
+        "measure": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "value", "share"],
+            "additionalProperties": false,
+            "properties": {
+              "category": { "type": "string" },
+              "value": { "type": "number" },
+              "share": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "dataSourceId": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+extends:
+  - recommended
+
+rules:
+  # Le operazioni hanno una sola risposta 2xx e usano problem+json per gli errori
+  operation-4xx-response: error
+  # Server locale accettato per il prototipo
+  no-server-example.com: off
+  no-empty-servers: error
+  # API interna: licenza senza URL
+  info-license-strict: off

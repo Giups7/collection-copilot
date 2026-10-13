@@ -1,0 +1,292 @@
+openapi: 3.1.0
+info:
+  title: Collection Copilot API
+  version: 1.0.0
+  license:
+    name: Uso interno - riservato
+  summary: Contratto tra i client (UI) e il motore AI di Collection Copilot.
+  description: |
+    Il motore AI riceve una richiesta in linguaggio naturale, la elabora con l'agente
+    e i tool di analisi (sola lettura) e restituisce testo e blocchi strutturati.
+
+    Regole del contratto:
+    - I client non contengono logica di business: inviano la domanda, mostrano i blocchi,
+      scaricano dati e file.
+    - Entro la v1 sono ammesse solo modifiche compatibili (campi o tipi di blocco aggiunti).
+      I client devono ignorare i tipi di blocco che non conoscono.
+    - Il contratto non espone nulla del modello AI usato.
+
+    Riferimento: ATF Confluence, pagina "12 – Contratto Copilot API e disaccoppiamento".
+servers:
+  - url: http://localhost:8080
+    description: Locale (mock o motore reale)
+security:
+  - entraId: []
+tags:
+  - name: requests
+    description: Richieste all'assistente e relative risposte
+  - name: resources
+    description: Dati, file e conversazioni
+  - name: meta
+    description: Informazioni sul servizio
+
+paths:
+  /v1/copilot/requests:
+    post:
+      tags: [requests]
+      operationId: createRequest
+      summary: Invia una richiesta all'assistente
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+        - $ref: '#/components/parameters/CorrelationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/api/copilot-request.schema.json'
+      responses:
+        '202':
+          description: Richiesta accettata; seguire eventsUrl (streaming) o resultUrl (risposta completa).
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/api/request-accepted.schema.json'
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '429':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/requests/{requestId}/events:
+    get:
+      tags: [requests]
+      operationId: streamRequestEvents
+      summary: Stream degli eventi della richiesta (SSE)
+      description: |
+        Stream Server-Sent Events. Ogni evento ha:
+        - `event`: status | message.delta | block | error | done
+        - `id`: numero progressivo (seq), usabile con l'header Last-Event-ID per riprendere
+        - `data`: JSON conforme a schemas/events/sse-event.schema.json (campo data)
+
+        Lo stream termina dopo l'evento `done`.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: Last-Event-ID
+          in: header
+          required: false
+          description: Riprende lo stream dall'evento successivo a questo seq.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stream di eventi.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/requests/{requestId}:
+    get:
+      tags: [requests]
+      operationId: getRequestResult
+      summary: Risposta completa (per client senza streaming o dopo una disconnessione)
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Stato e, se completata, risposta completa.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/api/copilot-result.schema.json'
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/requests/{requestId}/cancel:
+    post:
+      tags: [requests]
+      operationId: cancelRequest
+      summary: Annulla una richiesta in corso
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      responses:
+        '204':
+          description: Annullata (o gia conclusa).
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/requests/{requestId}/feedback:
+    post:
+      tags: [requests]
+      operationId: sendFeedback
+      summary: Valutazione dell'utente su una risposta
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/api/feedback.schema.json'
+      responses:
+        '204':
+          description: Feedback registrato.
+        '400':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/conversations/{conversationId}:
+    get:
+      tags: [resources]
+      operationId: getConversation
+      summary: Storico di una conversazione
+      parameters:
+        - name: conversationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Conversazione.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/api/conversation.schema.json'
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/data/{dataSourceId}:
+    get:
+      tags: [resources]
+      operationId: getDataPage
+      summary: Pagina di dati per un blocco tabella
+      parameters:
+        - name: dataSourceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 50
+        - name: sort
+          in: query
+          description: Colonna di ordinamento, con prefisso '-' per decrescente.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pagina di righe.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/api/data-page.schema.json'
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/files/{fileId}:
+    get:
+      tags: [resources]
+      operationId: downloadFile
+      summary: Download di un report
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                contentMediaType: application/pdf
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        '404':
+          $ref: '#/components/responses/Problem'
+
+  /v1/copilot/capabilities:
+    get:
+      tags: [meta]
+      operationId: getCapabilities
+      summary: Versioni, blocchi supportati, prompt suggeriti e default
+      responses:
+        '200':
+          description: Capacita del servizio.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/api/capabilities.schema.json'
+        '401':
+          $ref: '#/components/responses/Problem'
+
+components:
+  securitySchemes:
+    entraId:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Access token Microsoft Entra ID con audience api://collection-copilot-orchestrator.
+
+  parameters:
+    RequestId:
+      name: requestId
+      in: path
+      required: true
+      schema:
+        type: string
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      description: Chiave scelta dal client per evitare richieste duplicate in caso di retry.
+      schema:
+        type: string
+        maxLength: 100
+    CorrelationId:
+      name: X-Correlation-Id
+      in: header
+      required: false
+      description: Se assente viene generato dal servizio e restituito in risposta.
+      schema:
+        type: string
+
+  headers:
+    CorrelationId:
+      description: Identificativo di correlazione della richiesta.
+      schema:
+        type: string
+
+  responses:
+    Problem:
+      description: Errore (RFC 9457).
+      content:
+        application/problem+json:
+          schema:
+            $ref: '../schemas/common/problem.schema.json'

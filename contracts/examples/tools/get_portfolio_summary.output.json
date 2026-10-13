@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "tool": "get_portfolio_summary",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "n": 4820,
+    "excluded": { "total": 41, "byReason": { "NO_INITIAL_EXPOSURE": 29, "PAYMENT_WITHOUT_ASSIGNMENT": 12 } }
+  },
+  "cases": 4510,
+  "assignments": 4820,
+  "activeAssignments": 1190,
+  "exposure": 38400000,
+  "recovered": 6910000,
+  "recoveryRate": 0.18,
+  "previousPeriod": { "exposure": 36100000, "recovered": 6280000, "recoveryRate": 0.174 }
+}

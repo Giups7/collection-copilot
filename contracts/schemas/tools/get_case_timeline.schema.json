@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_case_timeline.schema.json",
+  "title": "get_case_timeline",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "required": ["caseRef"],
+      "additionalProperties": false,
+      "properties": {
+        "caseRef": { "type": "string", "minLength": 1, "description": "Identificativo pratica come indicato dall'utente; il server lo risolve e risponde con un riferimento pseudonimizzato." }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "caseRef", "events"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "caseRef": { "type": "string" },
+        "events": { "$ref": "../blocks/timeline.schema.json#/properties/events" }
+      }
+    }
+  }
+}

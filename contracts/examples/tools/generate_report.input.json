@@ -1,0 +1,1 @@
+{ "title": "Performance recuperatori - ottobre 2026", "format": "PDF", "sections": [ { "heading": "Portafoglio", "tool": "get_portfolio_summary", "input": {} }, { "heading": "Classifica per fascia", "tool": "rank_collectors_by_band", "input": { "kpi": "RR_90" } } ] }

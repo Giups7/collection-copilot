@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/rank_collectors_by_band.schema.json",
+  "title": "rank_collectors_by_band",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "kpi": { "$ref": "../common/defs.schema.json#/$defs/kpiCode", "default": "RR_90" },
+        "mixAdjusted": { "type": "boolean", "default": true },
+        "minSample": { "type": "integer", "minimum": 1, "default": 30 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "bands"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "bands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["fascia", "ranking", "ties"],
+            "additionalProperties": false,
+            "properties": {
+              "fascia": { "$ref": "../common/defs.schema.json#/$defs/fascia" },
+              "ranking": {
+                "type": "array",
+                "description": "Ordinata per limite inferiore dell'intervallo; INSUFFICIENT_DATA in coda.",
+                "items": { "$ref": "../blocks/ranking.schema.json#/$defs/rankingItem" }
+              },
+              "ties": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": { "$ref": "../common/defs.schema.json#/$defs/collector" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

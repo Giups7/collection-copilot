@@ -1,0 +1,24 @@
+{
+  "id": "b-chart",
+  "type": "chart",
+  "title": "Previsione incassi",
+  "meta": {
+    "tool": "forecast_recoveries",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "seed": 20261013
+  },
+  "chartType": "LINE",
+  "unit": "EUR",
+  "labels": ["2026-07", "2026-08", "2026-09", "2026-10", "2026-11", "2026-12"],
+  "series": [
+    { "name": "Incassato", "values": [580000, 545000, 602000, null, null, null] },
+    {
+      "name": "Previsione",
+      "values": [null, null, null, 590000, 571000, 548000],
+      "ciLow": [null, null, null, 530000, 498000, 462000],
+      "ciHigh": [null, null, null, 651000, 642000, 635000],
+      "forecast": true
+    }
+  ]
+}

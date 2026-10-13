@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/feedback.schema.json",
+  "title": "Feedback",
+  "description": "Corpo di POST /v1/copilot/requests/{requestId}/feedback.",
+  "type": "object",
+  "required": ["rating"],
+  "additionalProperties": false,
+  "properties": {
+    "rating": { "enum": ["USEFUL", "NOT_USEFUL"] },
+    "reasons": {
+      "type": "array",
+      "items": { "enum": ["WRONG_NUMBERS", "WRONG_ANALYSIS", "UNCLEAR", "INCOMPLETE", "TOO_SLOW", "OTHER"] },
+      "uniqueItems": true
+    },
+    "comment": { "type": "string", "maxLength": 2000 }
+  }
+}

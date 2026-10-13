@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/copilot-result.schema.json",
+  "title": "CopilotResult",
+  "description": "Risposta completa di GET /v1/copilot/requests/{requestId}.",
+  "type": "object",
+  "required": ["requestId", "conversationId", "status", "meta"],
+  "additionalProperties": false,
+  "properties": {
+    "requestId": { "type": "string" },
+    "conversationId": { "type": "string" },
+    "status": { "enum": ["QUEUED", "RUNNING", "COMPLETED", "FAILED", "CANCELLED"] },
+    "message": { "type": "string", "description": "Testo dell'assistente (Markdown semplice). Presente se status = COMPLETED." },
+    "blocks": {
+      "type": "array",
+      "items": { "$ref": "../blocks/block.schema.json" }
+    },
+    "insightRefs": {
+      "type": "array",
+      "description": "Insight citati nel testo.",
+      "items": { "$ref": "../common/defs.schema.json#/$defs/insightRef" }
+    },
+    "suggestedFollowUps": { "type": "array", "items": { "type": "string" }, "maxItems": 5 },
+    "error": { "$ref": "../common/problem.schema.json", "description": "Presente se status = FAILED." },
+    "meta": {
+      "type": "object",
+      "required": ["contractVersion", "agentVersion", "correlationId"],
+      "additionalProperties": false,
+      "properties": {
+        "contractVersion": { "type": "string", "pattern": "^1\\.[0-9]+$" },
+        "agentVersion": { "type": "string", "description": "Versione del pacchetto agent-pack (semver)." },
+        "correlationId": { "type": "string" },
+        "createdAt": { "$ref": "../common/defs.schema.json#/$defs/isoDateTime" },
+        "completedAt": { "$ref": "../common/defs.schema.json#/$defs/isoDateTime" }
+      }
+    }
+  }
+}

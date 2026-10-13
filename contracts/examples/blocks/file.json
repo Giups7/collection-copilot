@@ -1,0 +1,14 @@
+{
+  "id": "b-file",
+  "type": "file",
+  "title": "Report performance recuperatori",
+  "meta": {
+    "tool": "generate_report",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" }
+  },
+  "fileId": "f-20261013-001",
+  "format": "PDF",
+  "name": "report-performance-2026-10-13.pdf",
+  "sizeBytes": 284311
+}

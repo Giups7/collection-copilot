@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/capabilities.schema.json",
+  "title": "Capabilities",
+  "description": "Risposta di GET /v1/copilot/capabilities.",
+  "type": "object",
+  "required": ["contractVersion", "agentVersion", "blockTypes", "suggestedPrompts"],
+  "additionalProperties": false,
+  "properties": {
+    "contractVersion": { "type": "string" },
+    "agentVersion": { "type": "string" },
+    "blockTypes": { "type": "array", "items": { "type": "string" } },
+    "suggestedPrompts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "message"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "periodMonths": { "type": "integer", "minimum": 1 },
+        "kpi": { "$ref": "../common/defs.schema.json#/$defs/kpiCode" },
+        "minSample": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

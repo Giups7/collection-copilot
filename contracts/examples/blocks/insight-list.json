@@ -1,0 +1,35 @@
+{
+  "id": "b-insights",
+  "type": "insightList",
+  "title": "Insight",
+  "meta": {
+    "tool": "get_insights",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "kpi": "RR_90",
+    "kpiVersion": "1.0"
+  },
+  "items": [
+    {
+      "id": "INS-014",
+      "kind": "PERFORMANCE_GAP",
+      "severity": "INFO",
+      "summary": "FIDES sopra le attese in 1P (indice 1,18).",
+      "evidence": { "fascia": "1P", "collector": "FIDES", "index": 1.18, "ciLow": 1.07, "ciHigh": 1.29, "n": 412 }
+    },
+    {
+      "id": "INS-021",
+      "kind": "TREND_DECLINE",
+      "severity": "WARNING",
+      "summary": "TELECOM in calo in 1P da 3 trimestri.",
+      "evidence": { "fascia": "1P", "collector": "TELECOM", "quarters": 3, "slope": -0.012 }
+    },
+    {
+      "id": "INS-027",
+      "kind": "CURVE_PLATEAU",
+      "severity": "INFO",
+      "summary": "In 1P il 92% dell'incassato a 180 giorni arriva entro 90 giorni.",
+      "evidence": { "fascia": "1P", "shareAtDay": 90, "share": 0.92 }
+    }
+  ]
+}

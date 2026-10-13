@@ -1,0 +1,22 @@
+{
+  "id": "b-table",
+  "type": "table",
+  "title": "Performance per recuperatore e fascia",
+  "meta": {
+    "tool": "get_collector_performance",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "kpi": "RR_90",
+    "kpiVersion": "1.0",
+    "n": 4820
+  },
+  "dataSourceId": "ds-perf-all",
+  "totalRows": 12,
+  "columns": [
+    { "key": "collector", "label": "Recuperatore", "type": "string" },
+    { "key": "fascia", "label": "Fascia", "type": "string" },
+    { "key": "n", "label": "Affidi", "type": "number" },
+    { "key": "rr90", "label": "RR 90 gg", "type": "percent" },
+    { "key": "index", "label": "Indice mix", "type": "number" }
+  ]
+}

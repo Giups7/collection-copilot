@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/common/scope.schema.json",
+  "title": "Scope",
+  "description": "Filtri comuni delle analisi. Campi omessi = default (ultimi 12 mesi di inizio affido, tutto il perimetro dell'utente).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "from": { "$ref": "defs.schema.json#/$defs/isoDate", "description": "Inizio periodo (data di inizio affido, inclusa)." },
+    "to": { "$ref": "defs.schema.json#/$defs/isoDate", "description": "Fine periodo (data di inizio affido, inclusa)." },
+    "fasce": {
+      "type": "array",
+      "items": { "$ref": "defs.schema.json#/$defs/fascia" },
+      "uniqueItems": true
+    },
+    "collectors": {
+      "type": "array",
+      "items": { "$ref": "defs.schema.json#/$defs/collector" },
+      "uniqueItems": true
+    },
+    "products": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "regions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  }
+}

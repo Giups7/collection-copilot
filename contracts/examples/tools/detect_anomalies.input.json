@@ -1,0 +1,1 @@
+{ "scope": { "from": "2026-04-01", "to": "2026-09-30" }, "types": ["ANOMALY_PERFORMANCE_DROP", "ANOMALY_MISSING_REPORTS"] }

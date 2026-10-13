@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "tool": "rank_collectors_by_band",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30", "fasce": ["1P", "2P"] },
+    "kpi": "RR_90",
+    "kpiVersion": "1.0",
+    "n": 1767,
+    "excluded": { "total": 23, "byReason": { "NO_INITIAL_EXPOSURE": 15, "BAND_UNKNOWN": 8 } },
+    "seed": 20261013
+  },
+  "bands": [
+    {
+      "fascia": "1P",
+      "ranking": [
+        { "collector": "FIDES", "n": 412, "index": 1.18, "ci": [1.07, 1.29], "label": "ABOVE" },
+        { "collector": "PHONICA", "n": 655, "index": 1.01, "ci": [0.94, 1.08], "label": "IN_LINE" },
+        { "collector": "TELECOM", "n": 298, "index": 0.86, "ci": [0.76, 0.95], "label": "BELOW" }
+      ],
+      "ties": []
+    },
+    {
+      "fascia": "2P",
+      "ranking": [
+        { "collector": "PHONICA", "n": 210, "index": 1.05, "ci": [0.92, 1.19], "label": "IN_LINE" },
+        { "collector": "TELECOM", "n": 174, "index": 1.02, "ci": [0.88, 1.16], "label": "IN_LINE" },
+        { "collector": "CRIBIS", "n": 18, "label": "INSUFFICIENT_DATA" }
+      ],
+      "ties": [["PHONICA", "TELECOM"]]
+    }
+  ]
+}

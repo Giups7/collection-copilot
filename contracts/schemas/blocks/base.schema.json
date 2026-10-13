@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/base.schema.json",
+  "title": "Campi comuni dei blocchi",
+  "type": "object",
+  "required": ["id", "type", "meta"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": { "type": "string" },
+    "title": { "type": "string" },
+    "meta": { "$ref": "../common/meta.schema.json" }
+  }
+}

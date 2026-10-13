@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_insights.schema.json",
+  "title": "get_insights",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "kinds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["PERFORMANCE_GAP", "TREND_DECLINE", "CURVE_PLATEAU", "CONCENTRATION", "COST_OUTLIER", "DATA_QUALITY"] }
+        },
+        "minSeverity": { "$ref": "../common/defs.schema.json#/$defs/severity", "default": "INFO" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "insights"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "insights": {
+          "type": "array",
+          "items": { "$ref": "../blocks/insight-list.schema.json#/properties/items/items" }
+        }
+      }
+    }
+  }
+}

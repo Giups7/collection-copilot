@@ -1,0 +1,5 @@
+{
+  "scope": { "from": "2026-01-01", "to": "2026-06-30" },
+  "fromCollector": "TELECOM",
+  "toCollector": "FIDES"
+}

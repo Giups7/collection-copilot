@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "tool": "get_band_migration",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30", "fasce": ["1P"] },
+    "n": 1012
+  },
+  "collector": "FIDES",
+  "fromBands": ["1P"],
+  "outcomes": ["CURED", "CLOSED", "SAME_BAND", "NEXT_BAND", "LEGAL", "RETURNED"],
+  "cells": [
+    { "from": "1P", "outcome": "CURED", "count": 118, "share": 0.38 },
+    { "from": "1P", "outcome": "CLOSED", "count": 31, "share": 0.1 },
+    { "from": "1P", "outcome": "SAME_BAND", "count": 47, "share": 0.15 },
+    { "from": "1P", "outcome": "NEXT_BAND", "count": 93, "share": 0.3 },
+    { "from": "1P", "outcome": "LEGAL", "count": 6, "share": 0.02 },
+    { "from": "1P", "outcome": "RETURNED", "count": 16, "share": 0.05 }
+  ]
+}

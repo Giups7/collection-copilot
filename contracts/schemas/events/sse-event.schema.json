@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/events/sse-event.schema.json",
+  "title": "SseEvent",
+  "description": "Evento dello stream GET /v1/copilot/requests/{requestId}/events. Sul filo: campo SSE 'event' = event, campo 'data' = JSON di data, campo 'id' = seq (per la ripresa con Last-Event-ID).",
+  "type": "object",
+  "required": ["event", "seq", "data"],
+  "properties": {
+    "event": { "enum": ["status", "message.delta", "block", "error", "done"] },
+    "seq": { "type": "integer", "minimum": 0 },
+    "data": {}
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "event": { "const": "status" },
+        "data": {
+          "type": "object",
+          "required": ["phase", "label"],
+          "additionalProperties": false,
+          "properties": {
+            "phase": { "enum": ["QUEUED", "UNDERSTANDING", "TOOL_RUNNING", "WRITING", "CHECKING"] },
+            "label": { "type": "string", "description": "Testo per l'utente, es. 'Sto calcolando le curve di recupero...'" },
+            "tool": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": { "const": "message.delta" },
+        "data": {
+          "type": "object",
+          "required": ["text"],
+          "additionalProperties": false,
+          "properties": { "text": { "type": "string" } }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": { "const": "block" },
+        "data": { "$ref": "../blocks/block.schema.json" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": { "const": "error" },
+        "data": { "$ref": "../common/problem.schema.json" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": { "const": "done" },
+        "data": {
+          "type": "object",
+          "required": ["requestId", "status", "correlationId"],
+          "additionalProperties": false,
+          "properties": {
+            "requestId": { "type": "string" },
+            "status": { "enum": ["COMPLETED", "FAILED", "CANCELLED"] },
+            "correlationId": { "type": "string" }
+          }
+        }
+      }
+    }
+  ]
+}

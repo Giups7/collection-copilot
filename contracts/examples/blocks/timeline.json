@@ -1,0 +1,17 @@
+{
+  "id": "b-timeline",
+  "type": "timeline",
+  "title": "Storico pratica",
+  "meta": {
+    "tool": "get_case_timeline",
+    "asOf": "2026-10-12",
+    "scope": {}
+  },
+  "caseRef": "PR-7Q2K",
+  "events": [
+    { "date": "2026-02-03", "kind": "ASSIGNMENT_START", "description": "Affido a FIDES in fascia 1P", "collector": "FIDES" },
+    { "date": "2026-03-11", "kind": "REPORT", "description": "Contatto riuscito, promessa di pagamento", "collector": "FIDES" },
+    { "date": "2026-03-28", "kind": "PAYMENT", "description": "Incasso parziale", "collector": "FIDES", "amount": 1200 },
+    { "date": "2026-05-04", "kind": "ASSIGNMENT_END", "description": "Fine affido: regolarizzata", "collector": "FIDES" }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "scope": { "from": "2026-01-01", "to": "2026-06-30", "fasce": ["1P"] },
+  "fromCollector": "TELECOM",
+  "toCollector": "FIDES",
+  "kpi": "RR_90"
+}

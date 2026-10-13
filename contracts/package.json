@@ -1,0 +1,21 @@
+{
+  "name": "@collection-copilot/contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contratti di Collection Copilot: Copilot API (OpenAPI 3.1), blocchi UI, eventi SSE e tool MCP (JSON Schema 2020-12).",
+  "type": "module",
+  "scripts": {
+    "lint:openapi": "redocly lint openapi/copilot-api.v1.yaml",
+    "validate": "node scripts/validate.mjs",
+    "bundle": "redocly bundle openapi/copilot-api.v1.yaml -o dist/copilot-api.v1.bundled.yaml",
+    "check": "npm run lint:openapi && npm run validate"
+  },
+  "devDependencies": {
+    "@redocly/cli": "2.54.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_portfolio_summary.schema.json",
+  "title": "get_portfolio_summary",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "cases", "assignments", "exposure", "recovered", "recoveryRate"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "cases": { "type": "integer", "minimum": 0, "description": "Pratiche distinte nel perimetro." },
+        "assignments": { "type": "integer", "minimum": 0, "description": "Affidi iniziati nel periodo." },
+        "activeAssignments": { "type": "integer", "minimum": 0 },
+        "exposure": { "type": "number", "description": "Esposizione affidata (somma esposizioni iniziali), EUR." },
+        "recovered": { "type": "number", "description": "Incassato attribuito ai recuperatori, EUR." },
+        "recoveryRate": { "type": "number", "description": "recovered / exposure (0-1)." },
+        "previousPeriod": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "exposure": { "type": "number" },
+            "recovered": { "type": "number" },
+            "recoveryRate": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}

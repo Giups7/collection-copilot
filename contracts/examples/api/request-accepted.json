@@ -1,0 +1,7 @@
+{
+  "requestId": "r-456",
+  "conversationId": "c-123",
+  "status": "QUEUED",
+  "eventsUrl": "/v1/copilot/requests/r-456/events",
+  "resultUrl": "/v1/copilot/requests/r-456"
+}

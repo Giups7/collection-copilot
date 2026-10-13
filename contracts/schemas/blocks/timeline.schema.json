@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/timeline.schema.json",
+  "title": "TimelineBlock",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["caseRef", "events"],
+  "properties": {
+    "type": { "const": "timeline" },
+    "caseRef": { "type": "string", "description": "Riferimento pseudonimizzato della pratica." },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "kind", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "$ref": "../common/defs.schema.json#/$defs/isoDate" },
+          "kind": { "enum": ["ASSIGNMENT_START", "ASSIGNMENT_END", "PAYMENT", "REPORT", "STATUS_CHANGE", "BAND_CHANGE"] },
+          "description": { "type": "string" },
+          "collector": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+          "amount": { "type": "number" }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

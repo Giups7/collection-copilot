@@ -1,0 +1,96 @@
+{
+  "contractVersion": "1.0",
+  "description": "Catalogo dei tool MCP di analisi (sola lettura). Le descrizioni sono scritte per l'LLM: dicono QUANDO usare il tool. Input e output sono in <name>.schema.json, $defs.input e $defs.output.",
+  "tools": [
+    {
+      "name": "get_kpi_catalog",
+      "group": "context",
+      "description": "Restituisce le definizioni dei KPI, la loro versione e le dimensioni disponibili. Usalo quando l'utente chiede come e calcolato un indicatore o quali analisi sono possibili."
+    },
+    {
+      "name": "list_collectors",
+      "group": "context",
+      "description": "Elenca i recuperatori, le fasce in cui hanno operato e i nomi alternativi. Usalo per riconoscere un recuperatore citato dall'utente o per sapere chi opera in una fascia."
+    },
+    {
+      "name": "get_portfolio_summary",
+      "group": "portfolio",
+      "description": "KPI principali di portafoglio (pratiche, affidi, esposizione, incassato, recovery rate) con confronto sul periodo precedente. Usalo per domande generali su come sta andando il recupero."
+    },
+    {
+      "name": "get_recovery_trend",
+      "group": "portfolio",
+      "description": "Andamento degli incassi o del recovery rate per mese o trimestre, eventualmente per recuperatore o fascia. Usalo per domande sull'andamento nel tempo."
+    },
+    {
+      "name": "get_portfolio_distribution",
+      "group": "portfolio",
+      "description": "Distribuzione del portafoglio per una dimensione (fascia, prodotto, classificazione, regione, classe di esposizione, recuperatore). Usalo per domande sulla composizione del portafoglio."
+    },
+    {
+      "name": "generate_report",
+      "group": "portfolio",
+      "description": "Genera un report PDF o XLSX rieseguendo i tool di analisi indicati nelle sezioni. Usalo quando l'utente chiede un report, un file o un export."
+    },
+    {
+      "name": "get_collector_performance",
+      "group": "performance",
+      "description": "Matrice recuperatore x fascia di un KPI, con indice corretto per il mix di pratiche, intervalli di confidenza ed etichette. Usalo per una visione d'insieme delle performance."
+    },
+    {
+      "name": "compare_collectors",
+      "group": "performance",
+      "description": "Confronto diretto tra due o piu recuperatori in una fascia su piu KPI. Usalo quando l'utente nomina recuperatori specifici da confrontare."
+    },
+    {
+      "name": "rank_collectors_by_band",
+      "group": "performance",
+      "description": "Classifica dei recuperatori per fascia con etichette (sopra/in linea/sotto le attese, dati insufficienti) e pari merito. Usalo per domande su chi performa meglio o chi conviene usare in una fascia."
+    },
+    {
+      "name": "get_recovery_curves",
+      "group": "performance",
+      "description": "Curve di recupero cumulate per mese dall'inizio affido, per recuperatore e/o coorte trimestrale. Usalo per capire chi incassa prima, quando gli incassi si esauriscono o se le coorti recenti peggiorano."
+    },
+    {
+      "name": "get_band_migration",
+      "group": "performance",
+      "description": "Matrice fascia iniziale -> esito a fine affido (regolarizzata, chiusa, stessa fascia, fascia successiva, legale, restituita). Usalo per capire quanto un recuperatore evita il peggioramento delle pratiche."
+    },
+    {
+      "name": "get_cost_effectiveness",
+      "group": "performance",
+      "description": "Costo per euro recuperato e recupero netto per recuperatore e fascia. Usalo per domande su costi, provvigioni o convenienza. Se available=false, spiega che i dati non sono disponibili."
+    },
+    {
+      "name": "get_insights",
+      "group": "insights",
+      "description": "Insight calcolati dal codice (gap di performance, trend in calo, plateau delle curve, concentrazione, costi anomali, qualita dati). Usalo SEMPRE prima di proporre strategie o suggerimenti, e cita gli id degli insight."
+    },
+    {
+      "name": "detect_anomalies",
+      "group": "insights",
+      "description": "Anomalie di performance, rapportini mancanti e incassi anomali. Usalo per domande su problemi, anomalie o cose da controllare."
+    },
+    {
+      "name": "forecast_recoveries",
+      "group": "insights",
+      "description": "Previsione degli incassi per 1-3 mesi con intervallo e errore storico (backtest). Usalo per domande sul futuro; riporta sempre intervallo ed errore storico."
+    },
+    {
+      "name": "simulate_reassignment",
+      "group": "insights",
+      "description": "Stima indicativa di cosa sarebbe successo affidando le pratiche di un recuperatore a un altro, nella stessa fascia e periodo. Usalo per domande 'e se'; riporta sempre intervallo e assunzioni."
+    },
+    {
+      "name": "get_data_quality_report",
+      "group": "quality",
+      "description": "Esito dei controlli di qualita sui dati di affido e incasso. Usalo quando l'utente chiede quanto sono affidabili i dati o perche alcuni record sono esclusi."
+    },
+    {
+      "name": "get_case_timeline",
+      "group": "cases",
+      "description": "Storico di una singola pratica (affidi, incassi, rapportini, cambi di stato e fascia). Usalo quando l'utente indica una pratica specifica."
+    }
+  ]
+}

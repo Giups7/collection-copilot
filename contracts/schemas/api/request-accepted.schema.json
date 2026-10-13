@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/request-accepted.schema.json",
+  "title": "RequestAccepted",
+  "description": "Risposta 202 di POST /v1/copilot/requests.",
+  "type": "object",
+  "required": ["requestId", "conversationId", "status", "eventsUrl", "resultUrl"],
+  "additionalProperties": false,
+  "properties": {
+    "requestId": { "type": "string" },
+    "conversationId": { "type": "string" },
+    "status": { "enum": ["QUEUED", "RUNNING"] },
+    "eventsUrl": { "type": "string", "description": "URL dello stream SSE." },
+    "resultUrl": { "type": "string", "description": "URL della risposta completa." }
+  }
+}

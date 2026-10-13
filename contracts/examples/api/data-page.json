@@ -1,0 +1,10 @@
+{
+  "dataSourceId": "ds-perf-1p",
+  "page": 0,
+  "size": 2,
+  "totalRows": 3,
+  "rows": [
+    { "collector": "FIDES", "fascia": "1P", "n": 412, "rr90": 0.214, "index": 1.18 },
+    { "collector": "PHONICA", "fascia": "1P", "n": 655, "rr90": 0.183, "index": 1.01 }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/common/defs.schema.json",
+  "title": "Definizioni comuni",
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Data in formato ISO 8601 (YYYY-MM-DD)."
+    },
+    "isoDateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fascia": {
+      "type": "string",
+      "pattern": "^[0-9A-Z]{1,4}$",
+      "description": "Fascia operativa, es. 1P, 2P, 3P.",
+      "examples": ["1P"]
+    },
+    "collector": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_]{2,40}$",
+      "description": "Codice del recuperatore (societa di recupero).",
+      "examples": ["FIDES"]
+    },
+    "kpiCode": {
+      "type": "string",
+      "enum": [
+        "RR_30",
+        "RR_60",
+        "RR_90",
+        "RR_180",
+        "RR_END",
+        "CURE_RATE",
+        "FIRST_PAY_DAYS",
+        "PAY_RATE",
+        "AVG_RECOVERED",
+        "RETURN_NO_PAY",
+        "PTP_KEPT",
+        "COST_RATIO",
+        "NET_RECOVERY"
+      ],
+      "description": "Codice KPI del catalogo (pagina 04 dell'ATF)."
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["EUR", "%", "COUNT", "DAYS", "INDEX"]
+    },
+    "confidenceInterval": {
+      "type": "array",
+      "description": "Intervallo di confidenza [limite inferiore, limite superiore].",
+      "prefixItems": [{ "type": "number" }, { "type": "number" }],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "performanceLabel": {
+      "type": "string",
+      "enum": ["ABOVE", "IN_LINE", "BELOW", "INSUFFICIENT_DATA"],
+      "description": "ABOVE: limite inferiore > 1; IN_LINE: intervallo che comprende 1; BELOW: limite superiore < 1; INSUFFICIENT_DATA: sotto il volume minimo."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "WARNING", "CRITICAL"]
+    },
+    "excluded": {
+      "type": "object",
+      "description": "Record esclusi dal calcolo, con conteggio per motivo.",
+      "required": ["total", "byReason"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "byReason": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "insightRef": {
+      "type": "string",
+      "pattern": "^INS-[0-9]{3,6}$",
+      "examples": ["INS-014"]
+    }
+  }
+}

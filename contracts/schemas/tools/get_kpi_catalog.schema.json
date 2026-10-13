@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_kpi_catalog.schema.json",
+  "title": "get_kpi_catalog",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    },
+    "output": {
+      "type": "object",
+      "required": ["kpiVersion", "kpis", "dimensions"],
+      "additionalProperties": false,
+      "properties": {
+        "kpiVersion": { "type": "string" },
+        "kpis": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code", "name", "formula", "unit"],
+            "additionalProperties": false,
+            "properties": {
+              "code": { "$ref": "../common/defs.schema.json#/$defs/kpiCode" },
+              "name": { "type": "string" },
+              "formula": { "type": "string" },
+              "unit": { "$ref": "../common/defs.schema.json#/$defs/unit" },
+              "description": { "type": "string" },
+              "available": { "type": "boolean", "description": "False se i dati necessari non sono disponibili (es. provvigioni)." }
+            }
+          }
+        },
+        "dimensions": {
+          "type": "array",
+          "description": "Dimensioni di segmentazione disponibili.",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/file.schema.json",
+  "title": "FileBlock",
+  "description": "File scaricabile da GET /v1/copilot/files/{fileId}.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["fileId", "format", "name"],
+  "properties": {
+    "type": { "const": "file" },
+    "fileId": { "type": "string", "minLength": 1 },
+    "format": { "enum": ["PDF", "XLSX"] },
+    "name": { "type": "string" },
+    "sizeBytes": { "type": "integer", "minimum": 0 }
+  },
+  "unevaluatedProperties": false
+}

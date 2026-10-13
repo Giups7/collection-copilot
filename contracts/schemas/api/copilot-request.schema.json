@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/copilot-request.schema.json",
+  "title": "CopilotRequest",
+  "description": "Corpo di POST /v1/copilot/requests.",
+  "type": "object",
+  "required": ["message"],
+  "additionalProperties": false,
+  "properties": {
+    "conversationId": {
+      "type": "string",
+      "description": "Assente alla prima domanda: il motore crea una nuova conversazione e ne restituisce l'id."
+    },
+    "message": { "type": "string", "minLength": 1, "maxLength": 4000 },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locale": { "type": "string", "default": "it-IT" },
+        "scope": { "$ref": "../common/scope.schema.json", "description": "Filtri preimpostati dal client (es. fascia selezionata in pagina)." }
+      }
+    },
+    "clientCapabilities": {
+      "type": "array",
+      "description": "Tipi di blocco che il client sa mostrare. Per gli altri il motore ripiega su table o testo.",
+      "items": { "enum": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "whatIf", "file"] },
+      "uniqueItems": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/common/meta.schema.json",
+  "title": "Metadati di risultato",
+  "description": "Metadati obbligatori su ogni blocco dati e su ogni output dei tool di analisi (trasparenza, RF-03).",
+  "type": "object",
+  "required": ["tool", "asOf", "scope"],
+  "additionalProperties": false,
+  "properties": {
+    "tool": { "type": "string", "description": "Tool MCP che ha prodotto i dati." },
+    "asOf": { "$ref": "defs.schema.json#/$defs/isoDate", "description": "Data a cui si riferiscono i dati." },
+    "scope": { "$ref": "scope.schema.json", "description": "Filtri effettivamente applicati (default inclusi)." },
+    "kpi": { "$ref": "defs.schema.json#/$defs/kpiCode" },
+    "kpiVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "n": { "type": "integer", "minimum": 0, "description": "Numero di affidi considerati." },
+    "excluded": { "$ref": "defs.schema.json#/$defs/excluded" },
+    "seed": { "type": "integer", "description": "Seed usato per bootstrap e calcoli casuali, per la riproducibilita." }
+  }
+}

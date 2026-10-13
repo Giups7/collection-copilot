@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/ranking.schema.json",
+  "title": "RankingBlock",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["bands"],
+  "properties": {
+    "type": { "const": "ranking" },
+    "bands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fascia", "items", "ties"],
+        "additionalProperties": false,
+        "properties": {
+          "fascia": { "$ref": "../common/defs.schema.json#/$defs/fascia" },
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/rankingItem" }
+          },
+          "ties": {
+            "type": "array",
+            "description": "Gruppi di recuperatori con intervalli sovrapposti, da mostrare come pari merito.",
+            "items": {
+              "type": "array",
+              "items": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+              "minItems": 2
+            }
+          }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "rankingItem": {
+      "type": "object",
+      "required": ["collector", "n", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "collector": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+        "n": { "type": "integer", "minimum": 0 },
+        "index": { "type": "number" },
+        "ci": { "$ref": "../common/defs.schema.json#/$defs/confidenceInterval" },
+        "label": { "$ref": "../common/defs.schema.json#/$defs/performanceLabel" }
+      }
+    }
+  }
+}

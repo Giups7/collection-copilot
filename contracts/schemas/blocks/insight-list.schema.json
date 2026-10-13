@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/insight-list.schema.json",
+  "title": "InsightListBlock",
+  "description": "Insight e anomalie calcolati dal codice. Le strategie dell'LLM citano questi id.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["items"],
+  "properties": {
+    "type": { "const": "insightList" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "severity", "summary", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "../common/defs.schema.json#/$defs/insightRef" },
+          "kind": {
+            "enum": [
+              "PERFORMANCE_GAP",
+              "TREND_DECLINE",
+              "CURVE_PLATEAU",
+              "CONCENTRATION",
+              "COST_OUTLIER",
+              "DATA_QUALITY",
+              "ANOMALY_PERFORMANCE_DROP",
+              "ANOMALY_MISSING_REPORTS",
+              "ANOMALY_PAYMENT_OUTLIER"
+            ]
+          },
+          "severity": { "$ref": "../common/defs.schema.json#/$defs/severity" },
+          "summary": { "type": "string", "description": "Sintesi generata da template deterministico, non dall'LLM." },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": { "type": ["number", "string", "boolean", "array"] }
+          }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

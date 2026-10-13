@@ -1,0 +1,12 @@
+{
+  "id": "b-bad",
+  "type": "ranking",
+  "meta": { "tool": "rank_collectors_by_band", "asOf": "2026-10-12", "scope": {} },
+  "bands": [
+    {
+      "fascia": "1P",
+      "items": [{ "collector": "FIDES", "n": 412, "index": 1.18, "label": "BEST" }],
+      "ties": []
+    }
+  ]
+}

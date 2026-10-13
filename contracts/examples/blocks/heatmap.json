@@ -1,0 +1,25 @@
+{
+  "id": "b-heatmap",
+  "type": "heatmap",
+  "title": "Indice corretto per mix - recuperatore x fascia",
+  "meta": {
+    "tool": "get_collector_performance",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "kpi": "RR_90",
+    "kpiVersion": "1.0",
+    "n": 2193,
+    "seed": 20261013
+  },
+  "rows": ["FIDES", "PHONICA", "TELECOM"],
+  "cols": ["1P", "2P"],
+  "cells": [
+    { "row": "FIDES", "col": "1P", "value": 1.18, "ci": [1.07, 1.29], "n": 412, "insufficient": false },
+    { "row": "FIDES", "col": "2P", "value": null, "n": 22, "insufficient": true },
+    { "row": "PHONICA", "col": "1P", "value": 1.01, "ci": [0.94, 1.08], "n": 655, "insufficient": false },
+    { "row": "PHONICA", "col": "2P", "value": 1.05, "ci": [0.92, 1.19], "n": 210, "insufficient": false },
+    { "row": "TELECOM", "col": "1P", "value": 0.86, "ci": [0.76, 0.95], "n": 298, "insufficient": false },
+    { "row": "TELECOM", "col": "2P", "value": 1.02, "ci": [0.88, 1.16], "n": 174, "insufficient": false }
+  ],
+  "scale": { "center": 1, "unit": "INDEX" }
+}

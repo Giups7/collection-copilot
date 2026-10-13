@@ -1,0 +1,25 @@
+{
+  "id": "b-ranking",
+  "type": "ranking",
+  "title": "Classifica recuperatori - fascia 2P",
+  "meta": {
+    "tool": "rank_collectors_by_band",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30", "fasce": ["2P"] },
+    "kpi": "RR_90",
+    "kpiVersion": "1.0",
+    "n": 402,
+    "seed": 20261013
+  },
+  "bands": [
+    {
+      "fascia": "2P",
+      "items": [
+        { "collector": "PHONICA", "n": 210, "index": 1.05, "ci": [0.92, 1.19], "label": "IN_LINE" },
+        { "collector": "TELECOM", "n": 174, "index": 1.02, "ci": [0.88, 1.16], "label": "IN_LINE" },
+        { "collector": "CRIBIS", "n": 18, "label": "INSUFFICIENT_DATA" }
+      ],
+      "ties": [["PHONICA", "TELECOM"]]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "id": "b-nometa",
+  "type": "kpi",
+  "items": [{ "label": "Incassato", "value": 1000, "unit": "EUR" }]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/chart.schema.json",
+  "title": "ChartBlock",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["chartType", "labels", "series"],
+  "properties": {
+    "type": { "const": "chart" },
+    "chartType": { "enum": ["LINE", "BAR", "DOUGHNUT", "AREA"] },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "unit": { "$ref": "../common/defs.schema.json#/$defs/unit" },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "values"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "values": { "type": "array", "items": { "type": ["number", "null"] } },
+          "ciLow": { "type": "array", "items": { "type": ["number", "null"] } },
+          "ciHigh": { "type": "array", "items": { "type": ["number", "null"] } },
+          "forecast": { "type": "boolean", "description": "Serie prevista: disegnata tratteggiata con banda di incertezza." }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

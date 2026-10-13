@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/forecast_recoveries.schema.json",
+  "title": "forecast_recoveries",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "horizonMonths": { "type": "integer", "minimum": 1, "maximum": 3, "default": 3 },
+        "groupBy": { "enum": ["NONE", "COLLECTOR", "FASCIA"], "default": "NONE" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "horizon", "series", "backtest"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "horizon": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$" } },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "values", "ciLow", "ciHigh"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "values": { "type": "array", "items": { "type": "number" } },
+              "ciLow": { "type": "array", "items": { "type": "number" } },
+              "ciHigh": { "type": "array", "items": { "type": "number" } }
+            }
+          }
+        },
+        "backtest": {
+          "type": "object",
+          "required": ["months", "mape"],
+          "additionalProperties": false,
+          "description": "Errore della stessa previsione rifatta sui mesi passati.",
+          "properties": {
+            "months": { "type": "integer", "minimum": 1 },
+            "mape": { "type": "number", "minimum": 0, "description": "Errore percentuale assoluto medio (0-1)." },
+            "bias": { "type": "number", "description": "Errore medio con segno (positivo = sovrastima)." }
+          }
+        }
+      }
+    }
+  }
+}

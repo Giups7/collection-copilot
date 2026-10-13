@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/kpi.schema.json",
+  "title": "KpiBlock",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["items"],
+  "properties": {
+    "type": { "const": "kpi" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string" },
+          "value": { "type": "number" },
+          "unit": { "$ref": "../common/defs.schema.json#/$defs/unit" },
+          "ci": { "$ref": "../common/defs.schema.json#/$defs/confidenceInterval" },
+          "delta": { "type": "number", "description": "Variazione rispetto al periodo precedente, nella stessa unita." }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

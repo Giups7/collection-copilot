@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/block.schema.json",
+  "title": "Block",
+  "description": "Unione di tutti i blocchi noti in v1. I client devono ignorare (o mostrare con un fallback) i tipi che non conoscono: nuovi tipi possono essere aggiunti senza cambiare versione.",
+  "oneOf": [
+    { "$ref": "kpi.schema.json" },
+    { "$ref": "chart.schema.json" },
+    { "$ref": "table.schema.json" },
+    { "$ref": "timeline.schema.json" },
+    { "$ref": "heatmap.schema.json" },
+    { "$ref": "ranking.schema.json" },
+    { "$ref": "insight-list.schema.json" },
+    { "$ref": "what-if.schema.json" },
+    { "$ref": "file.schema.json" }
+  ]
+}

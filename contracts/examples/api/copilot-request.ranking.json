@@ -1,0 +1,6 @@
+{
+  "conversationId": "c-123",
+  "message": "Chi va meglio sulle 1P nell'ultimo anno?",
+  "context": { "locale": "it-IT", "scope": { "fasce": ["1P"] } },
+  "clientCapabilities": ["kpi", "chart", "table", "heatmap", "ranking", "insightList", "whatIf", "file"]
+}

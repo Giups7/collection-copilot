@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/list_collectors.schema.json",
+  "title": "list_collectors",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "collectors"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "collectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code", "name", "fasce", "active"],
+            "additionalProperties": false,
+            "properties": {
+              "code": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+              "name": { "type": "string" },
+              "fasce": { "type": "array", "items": { "$ref": "../common/defs.schema.json#/$defs/fascia" } },
+              "active": { "type": "boolean" },
+              "aliases": { "type": "array", "items": { "type": "string" }, "description": "Nomi alternativi usati dagli utenti." }
+            }
+          }
+        }
+      }
+    }
+  }
+}

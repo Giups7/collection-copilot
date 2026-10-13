@@ -1,0 +1,6 @@
+{
+  "scope": { "from": "2025-10-01", "to": "2026-09-30", "fasce": ["1P", "2P"] },
+  "kpi": "RR_90",
+  "mixAdjusted": true,
+  "minSample": 30
+}

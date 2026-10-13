@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/api/data-page.schema.json",
+  "title": "DataPage",
+  "description": "Risposta di GET /v1/copilot/data/{dataSourceId}. Le chiavi delle righe corrispondono a columns[].key del blocco table.",
+  "type": "object",
+  "required": ["dataSourceId", "page", "size", "totalRows", "rows"],
+  "additionalProperties": false,
+  "properties": {
+    "dataSourceId": { "type": "string" },
+    "page": { "type": "integer", "minimum": 0 },
+    "size": { "type": "integer", "minimum": 1, "maximum": 200 },
+    "totalRows": { "type": "integer", "minimum": 0 },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+      }
+    }
+  }
+}

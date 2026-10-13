@@ -1,0 +1,17 @@
+{
+  "id": "b-kpi",
+  "type": "kpi",
+  "title": "Portafoglio - ultimi 12 mesi",
+  "meta": {
+    "tool": "get_portfolio_summary",
+    "asOf": "2026-10-12",
+    "scope": { "from": "2025-10-01", "to": "2026-09-30" },
+    "n": 4820
+  },
+  "items": [
+    { "label": "Affidi", "value": 4820, "unit": "COUNT", "delta": 310 },
+    { "label": "Esposizione affidata", "value": 38400000, "unit": "EUR" },
+    { "label": "Incassato", "value": 6910000, "unit": "EUR", "delta": 420000 },
+    { "label": "Recovery rate", "value": 18.0, "unit": "%", "delta": 0.6 }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/blocks/heatmap.schema.json",
+  "title": "HeatmapBlock",
+  "description": "Matrice (es. recuperatore x fascia, oppure fascia iniziale -> esito). Le celle sotto il volume minimo hanno insufficient=true e value=null.",
+  "type": "object",
+  "allOf": [{ "$ref": "base.schema.json" }],
+  "required": ["rows", "cols", "cells", "scale"],
+  "properties": {
+    "type": { "const": "heatmap" },
+    "rows": { "type": "array", "items": { "type": "string" } },
+    "cols": { "type": "array", "items": { "type": "string" } },
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["row", "col", "value", "n", "insufficient"],
+        "additionalProperties": false,
+        "properties": {
+          "row": { "type": "string" },
+          "col": { "type": "string" },
+          "value": { "type": ["number", "null"] },
+          "ci": { "$ref": "../common/defs.schema.json#/$defs/confidenceInterval" },
+          "n": { "type": "integer", "minimum": 0 },
+          "insufficient": { "type": "boolean" }
+        }
+      }
+    },
+    "scale": {
+      "type": "object",
+      "required": ["center", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "center": { "type": "number", "description": "Valore neutro della scala (1 per gli indici)." },
+        "unit": { "$ref": "../common/defs.schema.json#/$defs/unit" }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

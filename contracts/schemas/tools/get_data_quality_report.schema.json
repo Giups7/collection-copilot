@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_data_quality_report.schema.json",
+  "title": "get_data_quality_report",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "totalRecords", "checks"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "totalRecords": { "type": "integer", "minimum": 0 },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["code", "description", "count", "effect"],
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "enum": [
+                  "PAYMENT_WITHOUT_ASSIGNMENT",
+                  "ASSIGNMENT_OPEN_CASE_CLOSED",
+                  "OVERLAPPING_ASSIGNMENTS",
+                  "NO_INITIAL_EXPOSURE",
+                  "BAND_UNKNOWN"
+                ]
+              },
+              "description": { "type": "string" },
+              "count": { "type": "integer", "minimum": 0 },
+              "effect": { "enum": ["EXCLUDED", "FLAGGED"] }
+            }
+          }
+        },
+        "dataSourceId": { "type": "string" }
+      }
+    }
+  }
+}

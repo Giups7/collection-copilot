@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_recovery_trend.schema.json",
+  "title": "get_recovery_trend",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "granularity": { "enum": ["MONTH", "QUARTER"], "default": "MONTH" },
+        "groupBy": { "enum": ["NONE", "COLLECTOR", "FASCIA"], "default": "NONE" },
+        "measure": { "enum": ["RECOVERED", "RECOVERY_RATE"], "default": "RECOVERED" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "granularity", "measure", "periods", "series"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "granularity": { "enum": ["MONTH", "QUARTER"] },
+        "measure": { "enum": ["RECOVERED", "RECOVERY_RATE"] },
+        "periods": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{4}-(0[1-9]|1[0-2]|Q[1-4])$" } },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "values"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "values": { "type": "array", "items": { "type": ["number", "null"] } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

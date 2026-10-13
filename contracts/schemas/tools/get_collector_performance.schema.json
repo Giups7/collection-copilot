@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_collector_performance.schema.json",
+  "title": "get_collector_performance",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "kpi": { "$ref": "../common/defs.schema.json#/$defs/kpiCode", "default": "RR_90" },
+        "mixAdjusted": { "type": "boolean", "default": true },
+        "minSample": { "type": "integer", "minimum": 1, "default": 30 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "cells"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "cells": {
+          "type": "array",
+          "description": "Una cella per recuperatore x fascia.",
+          "items": {
+            "type": "object",
+            "required": ["collector", "fascia", "n", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "collector": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+              "fascia": { "$ref": "../common/defs.schema.json#/$defs/fascia" },
+              "n": { "type": "integer", "minimum": 0 },
+              "exposure": { "type": "number" },
+              "value": { "type": "number", "description": "Valore semplice del KPI." },
+              "ci": { "$ref": "../common/defs.schema.json#/$defs/confidenceInterval" },
+              "index": { "type": "number", "description": "Indice corretto per mix (1 = in linea)." },
+              "indexCi": { "$ref": "../common/defs.schema.json#/$defs/confidenceInterval" },
+              "label": { "$ref": "../common/defs.schema.json#/$defs/performanceLabel" }
+            }
+          }
+        },
+        "dataSourceId": { "type": "string" }
+      }
+    }
+  }
+}

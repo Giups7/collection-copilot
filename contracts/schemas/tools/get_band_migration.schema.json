@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.collection-copilot.local/v1/tools/get_band_migration.schema.json",
+  "title": "get_band_migration",
+  "$defs": {
+    "outcome": {
+      "enum": ["CURED", "CLOSED", "SAME_BAND", "NEXT_BAND", "LEGAL", "RETURNED"],
+      "description": "Esito a fine affido: regolarizzata, chiusa (saldo/stralcio), stessa fascia, fascia successiva, gestione legale, restituita."
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "$ref": "../common/scope.schema.json" },
+        "collector": { "$ref": "../common/defs.schema.json#/$defs/collector", "description": "Omesso = tutti i recuperatori." }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["meta", "fromBands", "outcomes", "cells"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": { "$ref": "../common/meta.schema.json" },
+        "collector": { "$ref": "../common/defs.schema.json#/$defs/collector" },
+        "fromBands": { "type": "array", "items": { "$ref": "../common/defs.schema.json#/$defs/fascia" } },
+        "outcomes": { "type": "array", "items": { "$ref": "#/$defs/outcome" } },
+        "cells": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "outcome", "count", "share"],
+            "additionalProperties": false,
+            "properties": {
+              "from": { "$ref": "../common/defs.schema.json#/$defs/fascia" },
+              "outcome": { "$ref": "#/$defs/outcome" },
+              "count": { "type": "integer", "minimum": 0 },
+              "share": { "type": "number", "minimum": 0, "maximum": 1, "description": "Quota sul totale degli affidi conclusi della fascia di partenza." }
+            }
+          }
+        }
+      }
+    }
+  }
+}
