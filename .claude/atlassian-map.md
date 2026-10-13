@@ -66,6 +66,7 @@ Le decisioni D-01…D-12, D-16…D-18, D-20…D-22, D-25 non sono nel log: sono 
 | D-40 | Priorità alla catena reale (2026-10-13) | decisa |
 | D-41 | Accesso all'LLM con sign-in Microsoft (2026-10-13) | aperta (DA VERIFICARE) |
 | D-42 | Eliminata la simulazione di riassegnazione "e se" (tool simulate_reassignment e blocco whatIf rimossi); prodotto descrittivo (2026-10-13) | decisa |
+| D-43 | Pari merito in classifica per rango di separazione (rango = 1 + n. recuperatori con limite inferiore IC sopra il proprio limite superiore); non più "intervalli sovrapposti" (2026-10-13) | decisa |
 
 ## Jira – progetto KAN
 
