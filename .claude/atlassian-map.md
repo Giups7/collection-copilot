@@ -63,6 +63,9 @@ Le decisioni D-01…D-12, D-16…D-18, D-20…D-22, D-25 non sono nel log: sono 
 | D-37 | Disaccoppiamento UI / motore AI: Copilot API versionata, mock per le UI | decisa |
 | D-38 | Architettura agente: un solo agente, agent-pack versionato, nessun fine-tuning | aperta (DA CONFERMARE) |
 | D-39 | Standard e policy aziendali (OpenAPI, linguaggi, repo, CI, container, naming) | aperta (DA VERIFICARE) |
+| D-40 | Priorità alla catena reale (2026-10-13) | decisa |
+| D-41 | Accesso all'LLM con sign-in Microsoft (2026-10-13) | aperta (DA VERIFICARE) |
+| D-42 | Eliminata la simulazione di riassegnazione "e se" (tool simulate_reassignment e blocco whatIf rimossi); prodotto descrittivo (2026-10-13) | decisa |
 
 ## Jira – progetto KAN
 
@@ -113,7 +116,7 @@ Formato: chiave | titolo | stato. Epic padre indicata nella sezione.
 | KAN-30 | Login MSAL e interceptor del token in Angular | To Do |
 | KAN-31 | Chat con streaming SSE e prompt suggeriti | To Do |
 | KAN-32 | Block renderer e blocchi base (kpi, chart, table, timeline, file) | To Do |
-| KAN-33 | Blocchi di analisi: heatmap, ranking, insightList, whatIf | To Do |
+| KAN-33 | Blocchi di analisi: heatmap, ranking, insightList | To Do |
 | KAN-34 | Layout chat + area di lavoro e feedback sulle risposte | To Do |
 
 ### KAN-6 – E6 Motore statistico (analytics-engine) (To Do)
@@ -128,7 +131,7 @@ Formato: chiave | titolo | stato. Epic padre indicata nella sezione.
 | KAN-40 | Generatore di insight deterministici | To Do |
 | KAN-41 | Rilevazione anomalie e controlli di qualità dati | To Do |
 | KAN-42 | Previsione incassi con backtest | To Do |
-| KAN-43 | Costo-efficacia e simulazione "e se" | To Do |
+| KAN-43 | Costo-efficacia per recuperatore e fascia | To Do |
 
 ### KAN-7 – E7 MCP Server mock (To Do)
 
