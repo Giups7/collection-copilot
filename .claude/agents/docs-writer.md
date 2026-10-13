@@ -8,7 +8,7 @@ Tieni aggiornate due sezioni Confluence di Collection Copilot: le note di rilasc
 
 Riferimenti:
 - cloudId `cfd70809-cef8-419e-b240-8a124797ebde` (passalo sempre come argomento top-level); spazio COLLAI; pagina madre 655361.
-- Pagine: "14 Note di rilascio" e "15 Manuale d'uso", figlie della pagina madre. Se non esistono creale (cerca prima per titolo, non duplicare) e riporta gli ID nel report.
+- Pagine: "14 Note di rilascio" (ID 1605633) e "15 Manuale d'uso" (ID 1638401), figlie della pagina madre.
 - Repo: https://github.com/Giups7/collection-copilot. Fonti: `git log`, `git diff` del commit indicato, README dei moduli, story Jira citata nel brief.
 
 Note di rilascio:

@@ -1,7 +1,7 @@
 ---
 name: implementer
 description: Implementa una story Jira di Collection Copilot in un modulo del repo (mock, analytics-engine, mcp-mock, orchestrator, UI), contract-first e con test. Da usare per il lavoro di codice operativo.
-tools: Read, Edit, Write, Glob, Grep, Bash
+tools: Read, Edit, Write, Glob, Grep, Bash, mcp__atlassian__getConfluenceContent, mcp__atlassian__getJiraIssue
 model: sonnet
 ---
 
