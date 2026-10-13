@@ -9,7 +9,7 @@
 
 ## Confluence – pagine (spazio COLLAI)
 
-Colonna "padre": `–` = figlia diretta di 655361; `1081346` = figlia di "Fase futura".
+Colonna "padre": `–` = figlia diretta di 655361; `1081346` = figlia di "Fase futura"; `1769495` = figlia di "17 Specifica MCP Server".
 Fuori albero: 622770 "Collection Copilot AI Home" (home dello spazio, template vuoto).
 
 | ID | Titolo | Padre | Contenuto |
@@ -30,6 +30,8 @@ Fuori albero: 622770 "Collection Copilot AI Home" (home dello spazio, template v
 | 393246 | 13 – Configurazione, valutazione e miglioramento dell'agente | – | Agente configurato (no fine-tuning), agent-pack, golden set, valutazione |
 | 1605633 | 14 Note di rilascio | – | Note di rilascio per data/commit (es. 2026-10-13: contratti v1, mock) |
 | 1638401 | 15 Manuale d'uso | – | Uso del mock della Copilot API (Node >= 24, copilot-api-mock/) |
+| 1769495 | 17 Specifica MCP Server | – | Specifica per l'MCP Server reale su Oracle: protocollo, auth, convenzioni, dati sorgente, conformità, divergenze |
+| 2293761 | 17.1 Riferimento tool | 1769495 | Riferimento dei 17 tool: input, output, regole, esempi |
 | 1081346 | Fase futura – Allocazione lotti (sospesa) | – | Allocazione lotti sospesa dal 2026-10-13 (D-27); decisioni D-01…D-25 |
 | 131074 | Allocazione – Motore di allocazione parametrico | 1081346 | Motore deterministico di assegnazione pratiche a recuperatori con percentuali utente |
 | 786434 | Allocazione – Catalogo tool MCP (versione con lotti) | 1081346 | Tool MCP per lotti: tipizzazione, identità, paginazione |
