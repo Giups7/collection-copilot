@@ -32,3 +32,16 @@ export {
 } from './mix.ts';
 export { rankCollectorsByBand, separationRanks, type BandRanking, type CollectorRanking, type RankingItem } from './ranking.ts';
 export type { Affido, Dataset, Esito, Incasso, IncassoSenzaAffido, Scope, Segmento } from './types.ts';
+export {
+  getPortfolioDistribution,
+  getPortfolioSummary,
+  getRecoveryTrend,
+  type DistributionDimension,
+  type DistributionMeasure,
+  type PortfolioDistribution,
+  type PortfolioSummary,
+  type RecoveryTrend,
+  type TrendGranularity,
+  type TrendGroupBy,
+  type TrendMeasure,
+} from './portfolio.ts';

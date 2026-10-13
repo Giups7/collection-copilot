@@ -50,3 +50,7 @@ Confronti descrittivi su dati storici (D-42): l'atteso e il rendimento medio oss
 
 - Indice non calcolabile (con almeno `minSample` affidi ma esposizione attesa totale 0, per esempio nessun incasso nel benchmark): `label` INSUFFICIENT_DATA, senza `index`/`indexCi`.
 - Limiti noti: il benchmark include il recuperatore stesso e nel bootstrap resta fisso; gli IC risultano quindi leggermente stretti e l'indice tende un po' verso 1.
+
+## Aggregazioni di portafoglio (KAN-44)
+
+`getPortfolioSummary`, `getRecoveryTrend`, `getPortfolioDistribution` (`src/portfolio.ts`): output di `get_portfolio_summary`, `get_recovery_trend`, `get_portfolio_distribution` (con `meta`, validati contro `contracts/` nei test). Il trend attribuisce gli affidi al periodo di inizio affido (coorte); `previousPeriod` del riepilogo ha la stessa durata del periodo e lo stesso filtro.
