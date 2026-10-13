@@ -90,7 +90,7 @@ describe('frasi miste', () => {
     const cases: Record<string, string> = {
       'mostrami la heatmap di performance': 'heatmap',
       'genera il report di performance': 'report',
-      'simula la performance se riassegno': 'simulazione',
+      'simula la performance se riassegno': 'classifica',
       'chi performa meglio in 1P?': 'classifica',
     };
     for (const [message, id] of Object.entries(cases)) {

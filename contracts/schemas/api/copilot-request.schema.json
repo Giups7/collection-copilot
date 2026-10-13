@@ -23,7 +23,7 @@
     "clientCapabilities": {
       "type": "array",
       "description": "Tipi di blocco che il client sa mostrare. Per gli altri il motore ripiega su table o testo.",
-      "items": { "enum": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "whatIf", "file"] },
+      "items": { "enum": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "file"] },
       "uniqueItems": true
     }
   }

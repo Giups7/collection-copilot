@@ -48,3 +48,4 @@ Lo schema di riferimento si ricava dal percorso:
 - Vietato rimuovere campi, renderli obbligatori o cambiarne il significato: serve una v2.
 - I client devono ignorare (o mostrare con un fallback) i tipi di blocco che non conoscono.
 - Ogni modifica a uno schema va accompagnata da un esempio aggiornato.
+- D-42: rimossi prima del primo rilascio il tool simulate_reassignment e il blocco whatIf (eccezione alla regola, v1 senza consumatori esterni).

@@ -11,7 +11,6 @@
     { "$ref": "heatmap.schema.json" },
     { "$ref": "ranking.schema.json" },
     { "$ref": "insight-list.schema.json" },
-    { "$ref": "what-if.schema.json" },
     { "$ref": "file.schema.json" }
   ]
 }

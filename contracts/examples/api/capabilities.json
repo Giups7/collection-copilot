@@ -1,7 +1,7 @@
 {
   "contractVersion": "1.0",
   "agentVersion": "0.1.0",
-  "blockTypes": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "whatIf", "file"],
+  "blockTypes": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "file"],
   "suggestedPrompts": [
     { "label": "Andamento portafoglio", "message": "Come sta andando il portafoglio quest'anno?" },
     { "label": "Migliori per fascia", "message": "Chi performa meglio in ciascuna fascia?" },

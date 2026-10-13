@@ -43,7 +43,6 @@ All'avvio ogni scenario e validato contro gli schemi e controllato per coerenza:
 | `heatmap` | heatmap, mappa di calore, matrice, recuperatore per fascia | heatmap | Indice corretto per mix recuperatore x fascia, con celle `insufficient` (n < 30, valore null) |
 | `dati-insufficienti` | dati insufficienti, pochi dati, campione, volume minimo, cribis | ranking | Classifica 2P con due recuperatori `INSUFFICIENT_DATA` senza indice e due pari merito (`ties`) |
 | `insight` | insight, strategie, anomalie, consigli, suggerisci, migliorare | insightList, timeline | Insight e anomalie del codice (PERFORMANCE_GAP, TREND_DECLINE, CURVE_PLATEAU, ANOMALY_MISSING_REPORTS), storico di una pratica, strategie che citano gli id INS-xxx |
-| `simulazione` | simula, simulazione, what if, riassegn, se le pratiche | whatIf | Simulazione "e se" con intervallo di confidenza e tre assunzioni sempre dichiarate |
 | `previsione` | previsione, prevedi, forecast, prossimi mesi, prossimi 3 mesi | chart | Storico + serie `forecast` con banda `ciLow`/`ciHigh` (nulli dove non applicabili) |
 | `report` | report, pdf, excel, xlsx, esporta, scarica | file | Due blocchi file (PDF e XLSX) scaricabili da `/files/{fileId}` |
 | `errore` | errore, non autorizzato, vietato, accesso negato, 403 | nessuno | Perimetro non autorizzato: 403, `retryable: false`, FAILED |
