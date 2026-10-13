@@ -1,0 +1,9 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto calcolando l'andamento degli incassi...","tool":"get_recovery_trend"}}
+{"event":"block","seq":2,"data":{"id":"b1","type":"chart","title":"Incassi mensili - ultimi 12 mesi","meta":{"tool":"get_recovery_trend","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"},"n":4820},"chartType":"LINE","unit":"EUR","labels":["2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08","2026-09"],"series":[{"name":"Ultimi 12 mesi","values":[548000,561000,603000,597000,512000,589000,574000,596000,603000,580000,545000,602000]},{"name":"12 mesi precedenti","values":[520000,530000,571000,470000,480000,548000,531000,552000,560000,540000,500000,478000]}]}}
+{"event":"status","seq":3,"data":{"phase":"WRITING","label":"Sto scrivendo la risposta..."}}
+{"event":"message.delta","seq":4,"data":{"text":"Negli ultimi 12 mesi sono stati incassati **6,91 milioni di euro**, +10,0% rispetto ai 6,28 milioni dei 12 mesi precedenti. "}}
+{"event":"message.delta","seq":5,"data":{"text":"I mesi migliori sono dicembre 2025 e giugno 2026 (603 mila euro), il più debole è febbraio 2026 (512 mila euro). "}}
+{"event":"message.delta","seq":6,"data":{"text":"Da luglio gli incassi mensili restano tra 545 e 602 mila euro."}}
+{"event":"status","seq":7,"data":{"phase":"CHECKING","label":"Verifico i numeri citati..."}}
+{"event":"done","seq":8,"data":{"requestId":"r-incassi","status":"COMPLETED","correlationId":"7f3a9c2e"}}

@@ -1,13 +1,15 @@
 {
   "id": "errore",
-  "description": "Richiesta rifiutata per perimetro non autorizzato (stream con evento error, esito FAILED).",
+  "description": "Richiesta rifiutata per perimetro non autorizzato: evento SSE error 403 (retryable=false), esito FAILED.",
   "keywords": [
     "errore",
     "non autorizzato",
-    "vietato"
+    "vietato",
+    "accesso negato",
+    "403"
   ],
   "result": {
-    "requestId": "r-789",
+    "requestId": "r-errore",
     "conversationId": "c-123",
     "status": "FAILED",
     "error": {
@@ -21,7 +23,7 @@
     "meta": {
       "contractVersion": "1.0",
       "agentVersion": "0.1.0",
-      "correlationId": "9b1d0f44",
+      "correlationId": "7f3a9c2e",
       "createdAt": "2026-10-13T09:20:00Z",
       "completedAt": "2026-10-13T09:20:01Z"
     }

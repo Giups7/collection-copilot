@@ -1,0 +1,12 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto riepilogando il portafoglio...","tool":"get_portfolio_summary"}}
+{"event":"block","seq":2,"data":{"id":"b1","type":"kpi","title":"Portafoglio - ultimi 12 mesi","meta":{"tool":"get_portfolio_summary","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"},"n":4820,"excluded":{"total":41,"byReason":{"NO_INITIAL_EXPOSURE":29,"PAYMENT_WITHOUT_ASSIGNMENT":12}}},"items":[{"label":"Affidi","value":4820,"unit":"COUNT","delta":310},{"label":"Esposizione affidata","value":38400000,"unit":"EUR","delta":2300000},{"label":"Incassato","value":6910000,"unit":"EUR","delta":630000},{"label":"Recovery rate","value":18,"unit":"%","delta":0.6},{"label":"Cure rate","value":31.5,"unit":"%","delta":1.2},{"label":"Pay rate","value":62.4,"unit":"%","delta":-0.8}]}}
+{"event":"block","seq":3,"data":{"id":"b2","type":"table","title":"Portafoglio per fascia di affido","meta":{"tool":"get_portfolio_distribution","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"},"n":4820},"dataSourceId":"ds-portafoglio-fasce","totalRows":5,"columns":[{"key":"fascia","label":"Fascia","type":"string"},{"key":"affidi","label":"Affidi","type":"number"},{"key":"esposizione","label":"Esposizione","type":"currency"},{"key":"incassato","label":"Incassato","type":"currency"},{"key":"rr","label":"Recovery rate","type":"percent"}]}}
+{"event":"status","seq":4,"data":{"phase":"WRITING","label":"Sto scrivendo la risposta..."}}
+{"event":"message.delta","seq":5,"data":{"text":"Negli ultimi 12 mesi (affidi iniziati tra ottobre 2025 e settembre 2026) il portafoglio conta **4.820 affidi** per 38,4 milioni di euro di esposizione, con **6,91 milioni incassati**. "}}
+{"event":"message.delta","seq":6,"data":{"text":"Il recovery rate è del 18,0%, +0,6 punti rispetto ai 12 mesi precedenti. "}}
+{"event":"message.delta","seq":7,"data":{"text":"Il cure rate è al 31,5% e il pay rate al 62,4% (in lieve calo, -0,8 punti). "}}
+{"event":"message.delta","seq":8,"data":{"text":"La fascia 1P rende meglio (24,0%), la 5P peggio (10,3%). "}}
+{"event":"message.delta","seq":9,"data":{"text":"Sono stati esclusi 41 record per dati incompleti."}}
+{"event":"status","seq":10,"data":{"phase":"CHECKING","label":"Verifico i numeri citati..."}}
+{"event":"done","seq":11,"data":{"requestId":"r-riepilogo","status":"COMPLETED","correlationId":"7f3a9c2e"}}

@@ -1,0 +1,9 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto calcolando la previsione degli incassi...","tool":"forecast_recoveries"}}
+{"event":"block","seq":2,"data":{"id":"b1","type":"chart","title":"Previsione incassi","meta":{"tool":"forecast_recoveries","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"},"n":1190,"seed":20261013},"chartType":"LINE","unit":"EUR","labels":["2026-07","2026-08","2026-09","2026-10","2026-11","2026-12"],"series":[{"name":"Incassato","values":[580000,545000,602000,null,null,null]},{"name":"Previsione","values":[null,null,null,590000,571000,548000],"ciLow":[null,null,null,530000,498000,462000],"ciHigh":[null,null,null,651000,642000,635000],"forecast":true}]}}
+{"event":"status","seq":3,"data":{"phase":"WRITING","label":"Sto scrivendo la risposta..."}}
+{"event":"message.delta","seq":4,"data":{"text":"Sulle 1.190 posizioni ancora attive prevedo incassi di circa **590 mila euro a ottobre** (intervallo 530-651 mila), **571 mila a novembre** (498-642 mila) e **548 mila a dicembre** (462-635 mila). "}}
+{"event":"message.delta","seq":5,"data":{"text":"L'incertezza cresce con l'orizzonte. "}}
+{"event":"message.delta","seq":6,"data":{"text":"Nel backtest degli ultimi 6 mesi l'errore medio percentuale è stato del 7%."}}
+{"event":"status","seq":7,"data":{"phase":"CHECKING","label":"Verifico i numeri citati..."}}
+{"event":"done","seq":8,"data":{"requestId":"r-previsione","status":"COMPLETED","correlationId":"7f3a9c2e"}}

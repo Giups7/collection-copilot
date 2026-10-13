@@ -1,0 +1,95 @@
+{
+  "id": "incassi",
+  "description": "Andamento degli incassi mensili (chart LINE) a confronto con i 12 mesi precedenti.",
+  "keywords": [
+    "incassi",
+    "andamento",
+    "incassato",
+    "trend"
+  ],
+  "result": {
+    "requestId": "r-incassi",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Negli ultimi 12 mesi sono stati incassati **6,91 milioni di euro**, +10,0% rispetto ai 6,28 milioni dei 12 mesi precedenti. I mesi migliori sono dicembre 2025 e giugno 2026 (603 mila euro), il più debole è febbraio 2026 (512 mila euro). Da luglio gli incassi mensili restano tra 545 e 602 mila euro.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "chart",
+        "title": "Incassi mensili - ultimi 12 mesi",
+        "meta": {
+          "tool": "get_recovery_trend",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30"
+          },
+          "n": 4820
+        },
+        "chartType": "LINE",
+        "unit": "EUR",
+        "labels": [
+          "2025-10",
+          "2025-11",
+          "2025-12",
+          "2026-01",
+          "2026-02",
+          "2026-03",
+          "2026-04",
+          "2026-05",
+          "2026-06",
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "series": [
+          {
+            "name": "Ultimi 12 mesi",
+            "values": [
+              548000,
+              561000,
+              603000,
+              597000,
+              512000,
+              589000,
+              574000,
+              596000,
+              603000,
+              580000,
+              545000,
+              602000
+            ]
+          },
+          {
+            "name": "12 mesi precedenti",
+            "values": [
+              520000,
+              530000,
+              571000,
+              470000,
+              480000,
+              548000,
+              531000,
+              552000,
+              560000,
+              540000,
+              500000,
+              478000
+            ]
+          }
+        ]
+      }
+    ],
+    "suggestedFollowUps": [
+      "Quanto prevedi di incassare nei prossimi 3 mesi?",
+      "Riepilogo del portafoglio"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:35:02Z",
+      "completedAt": "2026-10-13T09:35:07Z"
+    }
+  }
+}

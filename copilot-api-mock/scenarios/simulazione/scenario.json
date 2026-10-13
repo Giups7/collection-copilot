@@ -1,0 +1,64 @@
+{
+  "id": "simulazione",
+  "description": "Simulazione \"e se\" (what-if) di una riassegnazione, con intervallo di confidenza e assunzioni sempre visibili.",
+  "keywords": [
+    "simula",
+    "simulazione",
+    "what if",
+    "riassegn",
+    "se le pratiche"
+  ],
+  "result": {
+    "requestId": "r-simulazione",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Se le 152 pratiche 1P affidate a TELECOM nel primo semestre 2026 fossero andate a **FIDES**, avrei stimato un incassato di circa **498 mila euro** contro i 412 mila effettivi: **+86 mila euro**, con un intervallo plausibile tra 31 e 140 mila euro. È una stima, non una previsione. Vale solo se FIDES avesse avuto capacità illimitata, la stessa performance a volumi maggiori e lo stesso mix di pratiche di TELECOM. Non è un'indicazione ad assegnare: la scelta resta a te.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "whatIf",
+        "title": "Simulazione: 1P di TELECOM affidate a FIDES",
+        "meta": {
+          "tool": "simulate_reassignment",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2026-01-01",
+            "to": "2026-06-30",
+            "fasce": [
+              "1P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 152,
+          "seed": 20261013
+        },
+        "question": "Se le pratiche 1P affidate a TELECOM nel primo semestre 2026 fossero andate a FIDES?",
+        "actual": 412000,
+        "estimated": 498000,
+        "difference": 86000,
+        "ci": [
+          31000,
+          140000
+        ],
+        "unit": "EUR",
+        "assumptions": [
+          "CAPACITY_UNLIMITED",
+          "SAME_PERFORMANCE_AT_HIGHER_VOLUME",
+          "MIX_FROM_SOURCE"
+        ]
+      }
+    ],
+    "suggestedFollowUps": [
+      "Quali sono i limiti di questa stima?",
+      "Mostrami la classifica delle 1P"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:55:02Z",
+      "completedAt": "2026-10-13T09:55:08Z"
+    }
+  }
+}

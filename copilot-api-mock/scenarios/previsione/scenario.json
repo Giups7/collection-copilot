@@ -1,0 +1,96 @@
+{
+  "id": "previsione",
+  "description": "Previsione degli incassi dei prossimi 3 mesi (serie forecast con banda di incertezza).",
+  "keywords": [
+    "previsione",
+    "prevedi",
+    "forecast",
+    "prossimi mesi",
+    "prossimi 3 mesi"
+  ],
+  "result": {
+    "requestId": "r-previsione",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Sulle 1.190 posizioni ancora attive prevedo incassi di circa **590 mila euro a ottobre** (intervallo 530-651 mila), **571 mila a novembre** (498-642 mila) e **548 mila a dicembre** (462-635 mila). L'incertezza cresce con l'orizzonte. Nel backtest degli ultimi 6 mesi l'errore medio percentuale è stato del 7%.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "chart",
+        "title": "Previsione incassi",
+        "meta": {
+          "tool": "forecast_recoveries",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30"
+          },
+          "n": 1190,
+          "seed": 20261013
+        },
+        "chartType": "LINE",
+        "unit": "EUR",
+        "labels": [
+          "2026-07",
+          "2026-08",
+          "2026-09",
+          "2026-10",
+          "2026-11",
+          "2026-12"
+        ],
+        "series": [
+          {
+            "name": "Incassato",
+            "values": [
+              580000,
+              545000,
+              602000,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "name": "Previsione",
+            "values": [
+              null,
+              null,
+              null,
+              590000,
+              571000,
+              548000
+            ],
+            "ciLow": [
+              null,
+              null,
+              null,
+              530000,
+              498000,
+              462000
+            ],
+            "ciHigh": [
+              null,
+              null,
+              null,
+              651000,
+              642000,
+              635000
+            ],
+            "forecast": true
+          }
+        ]
+      }
+    ],
+    "suggestedFollowUps": [
+      "Come sono andati gli incassi mese per mese?",
+      "Ci sono anomalie da controllare?"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T10:00:02Z",
+      "completedAt": "2026-10-13T10:00:08Z"
+    }
+  }
+}

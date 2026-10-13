@@ -1,0 +1,184 @@
+{
+  "id": "heatmap",
+  "description": "Heatmap della performance recuperatore x fascia (indice corretto per mix), con celle sotto il volume minimo.",
+  "keywords": [
+    "heatmap",
+    "mappa di calore",
+    "matrice",
+    "recuperatore per fascia"
+  ],
+  "result": {
+    "requestId": "r-heatmap",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Nella matrice recuperatore x fascia (RR a 90 giorni, indice corretto per il mix di pratiche; 1 = in linea con le attese) spicca **FIDES** in 1P (1,18), mentre **TELECOM** è sotto le attese sempre in 1P (0,86). In 2P e 3P tutti i recuperatori con volume sufficiente sono in linea. Le celle grigie hanno meno di 30 affidi e non vengono valutate: FIDES in 2P (22), CRIBIS in 2P (18) e 3P (14).",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "heatmap",
+        "title": "Indice corretto per mix - recuperatore x fascia",
+        "meta": {
+          "tool": "get_collector_performance",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30",
+            "fasce": [
+              "1P",
+              "2P",
+              "3P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 2778,
+          "seed": 20261013
+        },
+        "rows": [
+          "FIDES",
+          "PHONICA",
+          "TELECOM",
+          "CRIBIS"
+        ],
+        "cols": [
+          "1P",
+          "2P",
+          "3P"
+        ],
+        "cells": [
+          {
+            "row": "FIDES",
+            "col": "1P",
+            "value": 1.18,
+            "ci": [
+              1.07,
+              1.29
+            ],
+            "n": 412,
+            "insufficient": false
+          },
+          {
+            "row": "FIDES",
+            "col": "2P",
+            "value": null,
+            "n": 22,
+            "insufficient": true
+          },
+          {
+            "row": "FIDES",
+            "col": "3P",
+            "value": 1.09,
+            "ci": [
+              0.97,
+              1.22
+            ],
+            "n": 305,
+            "insufficient": false
+          },
+          {
+            "row": "PHONICA",
+            "col": "1P",
+            "value": 1.01,
+            "ci": [
+              0.94,
+              1.08
+            ],
+            "n": 655,
+            "insufficient": false
+          },
+          {
+            "row": "PHONICA",
+            "col": "2P",
+            "value": 1.05,
+            "ci": [
+              0.92,
+              1.19
+            ],
+            "n": 210,
+            "insufficient": false
+          },
+          {
+            "row": "PHONICA",
+            "col": "3P",
+            "value": 0.97,
+            "ci": [
+              0.89,
+              1.05
+            ],
+            "n": 380,
+            "insufficient": false
+          },
+          {
+            "row": "TELECOM",
+            "col": "1P",
+            "value": 0.86,
+            "ci": [
+              0.76,
+              0.95
+            ],
+            "n": 298,
+            "insufficient": false
+          },
+          {
+            "row": "TELECOM",
+            "col": "2P",
+            "value": 1.02,
+            "ci": [
+              0.88,
+              1.16
+            ],
+            "n": 174,
+            "insufficient": false
+          },
+          {
+            "row": "TELECOM",
+            "col": "3P",
+            "value": 1.03,
+            "ci": [
+              0.93,
+              1.13
+            ],
+            "n": 290,
+            "insufficient": false
+          },
+          {
+            "row": "CRIBIS",
+            "col": "1P",
+            "value": null,
+            "n": 0,
+            "insufficient": true
+          },
+          {
+            "row": "CRIBIS",
+            "col": "2P",
+            "value": null,
+            "n": 18,
+            "insufficient": true
+          },
+          {
+            "row": "CRIBIS",
+            "col": "3P",
+            "value": null,
+            "n": 14,
+            "insufficient": true
+          }
+        ],
+        "scale": {
+          "center": 1,
+          "unit": "INDEX"
+        }
+      }
+    ],
+    "suggestedFollowUps": [
+      "Perché le celle di CRIBIS non sono valutate?",
+      "Mostrami la classifica delle 1P"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:40:02Z",
+      "completedAt": "2026-10-13T09:40:08Z"
+    }
+  }
+}

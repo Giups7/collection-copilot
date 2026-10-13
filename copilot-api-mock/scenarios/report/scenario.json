@@ -1,0 +1,76 @@
+{
+  "id": "report",
+  "description": "Report PDF e XLSX scaricabili (blocchi file); i file appartengono allo scenario.",
+  "keywords": [
+    "report",
+    "pdf",
+    "excel",
+    "xlsx",
+    "esporta",
+    "scarica"
+  ],
+  "files": [
+    {
+      "fileId": "f-20261013-001",
+      "format": "PDF",
+      "name": "report-performance-2026-10-13.pdf"
+    },
+    {
+      "fileId": "f-20261013-002",
+      "format": "XLSX",
+      "name": "report-performance-2026-10-13.xlsx"
+    }
+  ],
+  "result": {
+    "requestId": "r-report",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Ho preparato il report sulla performance dei recuperatori per gli affidi di ottobre 2025 - settembre 2026, in due formati: **PDF** per la lettura e **Excel** per ulteriori elaborazioni. I dati sono aggiornati al 12 ottobre 2026.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "file",
+        "title": "Report performance recuperatori (PDF)",
+        "meta": {
+          "tool": "generate_report",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30"
+          }
+        },
+        "fileId": "f-20261013-001",
+        "format": "PDF",
+        "name": "report-performance-2026-10-13.pdf",
+        "sizeBytes": 620
+      },
+      {
+        "id": "b2",
+        "type": "file",
+        "title": "Report performance recuperatori (Excel)",
+        "meta": {
+          "tool": "generate_report",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30"
+          }
+        },
+        "fileId": "f-20261013-002",
+        "format": "XLSX",
+        "name": "report-performance-2026-10-13.xlsx",
+        "sizeBytes": 2316
+      }
+    ],
+    "suggestedFollowUps": [
+      "Chi va meglio nelle 1P?"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T10:05:02Z",
+      "completedAt": "2026-10-13T10:05:12Z"
+    }
+  }
+}

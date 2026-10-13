@@ -2,7 +2,6 @@ import { createServer, type IncomingMessage, type Server, type ServerResponse } 
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { loadContracts, type Contracts } from './contracts.ts';
-import { mockFiles } from './files.ts';
 import { conversationIdOf, correlationIdOf, hashOf, requestIdOf } from './ids.ts';
 import { problem, type Problem } from './problem.ts';
 import { DEFAULT_SCENARIOS_DIR, loadScenarios, pickScenario, type Scenario, type SseEvent } from './scenarios.ts';
@@ -14,9 +13,18 @@ const MAX_BODY = 64 * 1024;
 export interface MockOptions {
   scenariosDir?: string;
   schemasDir?: string;
-  /** Ritardo (ms) tra un evento SSE e il successivo. Default 0. */
+  /** Ritardo (ms) tra un evento SSE e il successivo. Default 0. Lo scenario puo sovrascriverlo (streaming.delayMs). */
   eventDelayMs?: number;
+  /** Chiude la connessione SSE dopo N eventi (solo al primo collegamento, senza Last-Event-ID). Lo scenario puo sovrascriverlo. */
+  dropAfterEvents?: number;
+  /** CORS (fuori dal contratto): risponde 204 agli OPTIONS prima del controllo Bearer e aggiunge gli header Access-Control-*. Default false. */
+  cors?: boolean;
+  /** Valore di Access-Control-Allow-Origin. Default http://localhost:4200. */
+  corsOrigin?: string;
 }
+
+export const DEFAULT_CORS_ORIGIN = 'http://localhost:4200';
+const CORS_ALLOW_HEADERS = 'Authorization, Content-Type, Idempotency-Key, X-Correlation-Id, X-Mock-Scenario, Last-Event-ID';
 
 interface RequestRecord {
   requestId: string;
@@ -74,11 +82,11 @@ export function createMockServer(options: MockOptions = {}): Server {
   const contracts: Contracts = loadContracts(options.schemasDir);
   const scenarios = loadScenarios(options.scenariosDir ?? DEFAULT_SCENARIOS_DIR, contracts);
   const delayMs = options.eventDelayMs ?? 0;
-  const files = mockFiles();
   const capabilities = JSON.parse(readFileSync(resolve(FIXTURES_DIR, 'capabilities.json'), 'utf8'));
-  const dataSources = new Map<string, Record<string, unknown>[]>([
-    ['ds-perf-1p', JSON.parse(readFileSync(resolve(FIXTURES_DIR, 'data/ds-perf-1p.json'), 'utf8')).rows],
-  ]);
+  // Data source e file appartengono agli scenari (ids univoci, verificati al caricamento).
+  const dataSources = new Map([...scenarios.values()].flatMap((s) => [...s.dataSources]));
+  const files = new Map([...scenarios.values()].flatMap((s) => [...s.files]));
+  const corsOrigin = options.corsOrigin ?? DEFAULT_CORS_ORIGIN;
   const validateRequest = contracts.validator('api/copilot-request.schema.json');
   const validateFeedback = contracts.validator('api/feedback.schema.json');
 
@@ -153,6 +161,9 @@ export function createMockServer(options: MockOptions = {}): Server {
     const raw = header(req, 'last-event-id');
     const last = raw !== undefined && /^\d+$/.test(raw) ? Number(raw) : -1;
     const pending = eventsOf(record).filter((e) => e.seq > last);
+    const delay = record.scenario.streaming.delayMs ?? delayMs;
+    // Interruzione simulata solo al primo collegamento: la ripresa con Last-Event-ID completa lo stream.
+    const dropAfter = last === -1 ? (record.scenario.streaming.dropAfterEvents ?? options.dropAfterEvents) : undefined;
     let closed = false;
     res.on('close', () => (closed = true));
     res.writeHead(200, {
@@ -163,7 +174,12 @@ export function createMockServer(options: MockOptions = {}): Server {
     });
     for (const [i, e] of pending.entries()) {
       if (closed) return;
-      if (i > 0 && delayMs > 0) await sleep(delayMs);
+      if (dropAfter !== undefined && i >= dropAfter) {
+        res.flushHeaders();
+        await new Promise<void>((r) => res.write('', () => r())); // lascia partire gli eventi gia scritti, poi cade la connessione
+        return void res.destroy();
+      }
+      if (i > 0 && delay > 0) await sleep(delay);
       if (closed) return;
       res.write(`id: ${e.seq}\nevent: ${e.event}\ndata: ${JSON.stringify(e.data)}\n\n`);
     }
@@ -275,6 +291,17 @@ export function createMockServer(options: MockOptions = {}): Server {
   }
 
   return createServer((req, res) => {
+    if (options.cors) {
+      res.setHeader('Access-Control-Allow-Origin', corsOrigin);
+      res.setHeader('Access-Control-Expose-Headers', 'X-Correlation-Id');
+      if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Headers', CORS_ALLOW_HEADERS);
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.setHeader('Access-Control-Max-Age', '600');
+        res.writeHead(204).end(); // preflight: prima del controllo Bearer
+        return;
+      }
+    }
     route(req, res).catch((err) => {
       const p = err instanceof HttpError ? err.problem : problem(500, 'internal-error', 'Errore interno', String(err?.message ?? err));
       if (res.headersSent) return void res.end();

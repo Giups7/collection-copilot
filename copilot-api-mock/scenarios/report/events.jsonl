@@ -1,0 +1,9 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto generando il report...","tool":"generate_report"}}
+{"event":"block","seq":2,"data":{"id":"b1","type":"file","title":"Report performance recuperatori (PDF)","meta":{"tool":"generate_report","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"}},"fileId":"f-20261013-001","format":"PDF","name":"report-performance-2026-10-13.pdf","sizeBytes":620}}
+{"event":"block","seq":3,"data":{"id":"b2","type":"file","title":"Report performance recuperatori (Excel)","meta":{"tool":"generate_report","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30"}},"fileId":"f-20261013-002","format":"XLSX","name":"report-performance-2026-10-13.xlsx","sizeBytes":2316}}
+{"event":"status","seq":4,"data":{"phase":"WRITING","label":"Sto scrivendo la risposta..."}}
+{"event":"message.delta","seq":5,"data":{"text":"Ho preparato il report sulla performance dei recuperatori per gli affidi di ottobre 2025 - settembre 2026, in due formati: **PDF** per la lettura e **Excel** per ulteriori elaborazioni. "}}
+{"event":"message.delta","seq":6,"data":{"text":"I dati sono aggiornati al 12 ottobre 2026."}}
+{"event":"status","seq":7,"data":{"phase":"CHECKING","label":"Verifico i numeri citati..."}}
+{"event":"done","seq":8,"data":{"requestId":"r-report","status":"COMPLETED","correlationId":"7f3a9c2e"}}

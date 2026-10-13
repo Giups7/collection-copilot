@@ -1,0 +1,9 @@
+{
+  "rows": [
+    {"fascia":"1P","affidi":1365,"esposizione":9800000,"incassato":2350000,"rr":0.24},
+    {"fascia":"2P","affidi":424,"esposizione":3100000,"incassato":620000,"rr":0.2},
+    {"fascia":"3P","affidi":989,"esposizione":7500000,"incassato":1350000,"rr":0.18},
+    {"fascia":"4P","affidi":1620,"esposizione":12000000,"incassato":1970000,"rr":0.164},
+    {"fascia":"5P","affidi":422,"esposizione":6000000,"incassato":620000,"rr":0.103}
+  ]
+}

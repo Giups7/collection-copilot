@@ -1,0 +1,10 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto calcolando la classifica delle 2P...","tool":"rank_collectors_by_band"}}
+{"event":"block","seq":2,"data":{"id":"b1","type":"ranking","title":"Classifica recuperatori - fascia 2P","meta":{"tool":"rank_collectors_by_band","asOf":"2026-10-12","scope":{"from":"2025-10-01","to":"2026-09-30","fasce":["2P"]},"kpi":"RR_90","kpiVersion":"1.0","n":424,"excluded":{"total":6,"byReason":{"NO_INITIAL_EXPOSURE":4,"BAND_UNKNOWN":2}},"seed":20261013},"bands":[{"fascia":"2P","ties":[["PHONICA","TELECOM"]],"items":[{"collector":"PHONICA","n":210,"index":1.05,"ci":[0.92,1.19],"label":"IN_LINE"},{"collector":"TELECOM","n":174,"index":1.02,"ci":[0.88,1.16],"label":"IN_LINE"},{"collector":"FIDES","n":22,"label":"INSUFFICIENT_DATA"},{"collector":"CRIBIS","n":18,"label":"INSUFFICIENT_DATA"}]}]}}
+{"event":"status","seq":3,"data":{"phase":"WRITING","label":"Sto scrivendo la risposta..."}}
+{"event":"message.delta","seq":4,"data":{"text":"Sulle 2P non posso stilare una classifica completa. "}}
+{"event":"message.delta","seq":5,"data":{"text":"**PHONICA** (indice 1,05; 210 affidi) e **TELECOM** (1,02; 174 affidi) hanno intervalli sovrapposti: sono pari merito, entrambi in linea con le attese. "}}
+{"event":"message.delta","seq":6,"data":{"text":"**FIDES** (22 affidi) e **CRIBIS** (18 affidi) restano sotto il volume minimo di 30 affidi: non mostro alcun indice per non dare un numero poco affidabile. "}}
+{"event":"message.delta","seq":7,"data":{"text":"Allargare il periodo potrebbe aumentare i volumi."}}
+{"event":"status","seq":8,"data":{"phase":"CHECKING","label":"Verifico i numeri citati..."}}
+{"event":"done","seq":9,"data":{"requestId":"r-dati-insufficienti","status":"COMPLETED","correlationId":"7f3a9c2e"}}

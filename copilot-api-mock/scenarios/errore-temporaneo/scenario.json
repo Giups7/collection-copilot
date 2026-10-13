@@ -1,0 +1,32 @@
+{
+  "id": "errore-temporaneo",
+  "description": "Errore temporaneo del motore di analisi: evento SSE error 503 con retryable=true, esito FAILED. Il client puo riprovare.",
+  "keywords": [
+    "errore temporaneo",
+    "temporaneo",
+    "riprova",
+    "non disponibile",
+    "503",
+    "timeout"
+  ],
+  "result": {
+    "requestId": "r-errore-temporaneo",
+    "conversationId": "c-123",
+    "status": "FAILED",
+    "error": {
+      "type": "https://errors.collection-copilot/service-unavailable",
+      "title": "Servizio temporaneamente non disponibile",
+      "status": 503,
+      "detail": "Il motore di analisi non ha risposto in tempo. Riprova tra qualche istante.",
+      "correlationId": "9b1d0f44",
+      "retryable": true
+    },
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T10:10:00Z",
+      "completedAt": "2026-10-13T10:10:08Z"
+    }
+  }
+}

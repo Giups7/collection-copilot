@@ -1,18 +1,19 @@
 {
   "id": "classifica",
-  "description": "Classifica recuperatori per fascia (ranking) con testo in streaming.",
+  "description": "Classifica recuperatori per fascia (ranking) con tabella di dettaglio paginata.",
   "keywords": [
     "classifica",
     "chi va meglio",
     "migliori",
-    "performa",
+    "chi performa",
+    "performa meglio",
     "ranking"
   ],
   "result": {
-    "requestId": "r-456",
+    "requestId": "r-classifica",
     "conversationId": "c-123",
     "status": "COMPLETED",
-    "message": "Sulle 1P, negli affidi iniziati tra ottobre 2025 e settembre 2026, **FIDES** e sopra le attese per il mix di pratiche ricevuto (indice 1,18; intervallo 1,07-1,29; 412 affidi). PHONICA e in linea (1,01), TELECOM e sotto le attese (0,86). Vedi INS-014.",
+    "message": "Sulle 1P, negli affidi iniziati tra ottobre 2025 e settembre 2026, **FIDES** è sopra le attese per il mix di pratiche ricevuto (indice 1,18; intervallo 1,07-1,29; 412 affidi). PHONICA è in linea (1,01), TELECOM è sotto le attese (0,86). Vedi INS-014.",
     "blocks": [
       {
         "id": "b1",
@@ -43,6 +44,7 @@
         "bands": [
           {
             "fascia": "1P",
+            "ties": [],
             "items": [
               {
                 "collector": "FIDES",
@@ -74,8 +76,56 @@
                 ],
                 "label": "BELOW"
               }
-            ],
-            "ties": []
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2",
+        "type": "table",
+        "title": "Dettaglio RR a 90 giorni - fascia 1P",
+        "meta": {
+          "tool": "get_collector_performance",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30",
+            "fasce": [
+              "1P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 1365,
+          "seed": 20261013
+        },
+        "dataSourceId": "ds-perf-1p",
+        "totalRows": 3,
+        "columns": [
+          {
+            "key": "collector",
+            "label": "Recuperatore",
+            "type": "string"
+          },
+          {
+            "key": "fascia",
+            "label": "Fascia",
+            "type": "string"
+          },
+          {
+            "key": "n",
+            "label": "Affidi",
+            "type": "number"
+          },
+          {
+            "key": "rr90",
+            "label": "RR 90 gg",
+            "type": "percent"
+          },
+          {
+            "key": "index",
+            "label": "Indice mix",
+            "type": "number"
           }
         ]
       }
@@ -84,7 +134,7 @@
       "INS-014"
     ],
     "suggestedFollowUps": [
-      "Perche TELECOM e sotto le attese sulle 1P?",
+      "Perché TELECOM è sotto le attese sulle 1P?",
       "Mostrami le curve di recupero delle 1P"
     ],
     "meta": {

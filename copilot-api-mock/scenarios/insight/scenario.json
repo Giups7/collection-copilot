@@ -1,0 +1,145 @@
+{
+  "id": "insight",
+  "description": "Insight e anomalie calcolati dal codice, storico di una pratica coinvolta e strategie che citano gli insight.",
+  "keywords": [
+    "insight",
+    "strategie",
+    "anomalie",
+    "consigli",
+    "suggerisci",
+    "migliorare"
+  ],
+  "result": {
+    "requestId": "r-insight",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Ho trovato quattro punti rilevanti sulle 1P. **FIDES** è sopra le attese (INS-014), mentre **TELECOM** è in calo da tre trimestri (INS-021) e ha 38 affidi senza report da oltre 30 giorni (INS-031): la pratica PR-3M8D qui sotto ne è un esempio. Inoltre il 92% dell'incassato a 180 giorni arriva entro 90 giorni (INS-027). **Strategie da valutare** (la decisione resta a te): 1) chiedere a TELECOM di regolarizzare i report mancanti e verificarne la capacità operativa, citando INS-021 e INS-031; 2) concentrare i solleciti nei primi 90 giorni di affido, dove si genera quasi tutto l'incassato (INS-027); 3) osservare le pratiche gestite da FIDES come riferimento di buona pratica (INS-014).",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "insightList",
+        "title": "Insight e anomalie",
+        "meta": {
+          "tool": "get_insights",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30",
+            "fasce": [
+              "1P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 1365,
+          "seed": 20261013
+        },
+        "items": [
+          {
+            "id": "INS-014",
+            "kind": "PERFORMANCE_GAP",
+            "severity": "INFO",
+            "summary": "FIDES sopra le attese in 1P (indice 1,18).",
+            "evidence": {
+              "fascia": "1P",
+              "collector": "FIDES",
+              "index": 1.18,
+              "ciLow": 1.07,
+              "ciHigh": 1.29,
+              "n": 412
+            }
+          },
+          {
+            "id": "INS-021",
+            "kind": "TREND_DECLINE",
+            "severity": "WARNING",
+            "summary": "TELECOM in calo in 1P da 3 trimestri.",
+            "evidence": {
+              "fascia": "1P",
+              "collector": "TELECOM",
+              "quarters": 3,
+              "slope": -0.012
+            }
+          },
+          {
+            "id": "INS-027",
+            "kind": "CURVE_PLATEAU",
+            "severity": "INFO",
+            "summary": "In 1P il 92% dell'incassato a 180 giorni arriva entro 90 giorni.",
+            "evidence": {
+              "fascia": "1P",
+              "shareAtDay": 90,
+              "share": 0.92
+            }
+          },
+          {
+            "id": "INS-031",
+            "kind": "ANOMALY_MISSING_REPORTS",
+            "severity": "WARNING",
+            "summary": "TELECOM: 38 affidi 1P senza report da oltre 30 giorni.",
+            "evidence": {
+              "fascia": "1P",
+              "collector": "TELECOM",
+              "affidi": 38,
+              "giorniSenzaReport": 30,
+              "caseRef": "PR-3M8D"
+            }
+          }
+        ]
+      },
+      {
+        "id": "b2",
+        "type": "timeline",
+        "title": "Storico pratica PR-3M8D (esempio di INS-031)",
+        "meta": {
+          "tool": "get_case_timeline",
+          "asOf": "2026-10-12",
+          "scope": {}
+        },
+        "caseRef": "PR-3M8D",
+        "events": [
+          {
+            "date": "2026-06-15",
+            "kind": "ASSIGNMENT_START",
+            "description": "Affido a TELECOM in fascia 1P",
+            "collector": "TELECOM"
+          },
+          {
+            "date": "2026-06-30",
+            "kind": "REPORT",
+            "description": "Primo contatto: numero non raggiungibile",
+            "collector": "TELECOM"
+          },
+          {
+            "date": "2026-08-20",
+            "kind": "STATUS_CHANGE",
+            "description": "Nessun report da 51 giorni: segnalata anomalia",
+            "collector": "TELECOM"
+          },
+          {
+            "date": "2026-09-10",
+            "kind": "BAND_CHANGE",
+            "description": "Passaggio dalla fascia 1P alla 2P"
+          }
+        ]
+      }
+    ],
+    "insightRefs": [
+      "INS-014",
+      "INS-021",
+      "INS-027",
+      "INS-031"
+    ],
+    "suggestedFollowUps": [
+      "Simula: se le 1P di TELECOM fossero andate a FIDES?",
+      "Mostrami le curve di recupero delle 1P"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:50:02Z",
+      "completedAt": "2026-10-13T09:50:10Z"
+    }
+  }
+}

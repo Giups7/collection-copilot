@@ -1,0 +1,100 @@
+{
+  "id": "dati-insufficienti",
+  "description": "Classifica 2P in cui due recuperatori sono sotto il volume minimo (INSUFFICIENT_DATA) e due risultano pari merito.",
+  "keywords": [
+    "dati insufficienti",
+    "pochi dati",
+    "campione",
+    "volume minimo",
+    "cribis"
+  ],
+  "result": {
+    "requestId": "r-dati-insufficienti",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Sulle 2P non posso stilare una classifica completa. **PHONICA** (indice 1,05; 210 affidi) e **TELECOM** (1,02; 174 affidi) hanno intervalli sovrapposti: sono pari merito, entrambi in linea con le attese. **FIDES** (22 affidi) e **CRIBIS** (18 affidi) restano sotto il volume minimo di 30 affidi: non mostro alcun indice per non dare un numero poco affidabile. Allargare il periodo potrebbe aumentare i volumi.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "ranking",
+        "title": "Classifica recuperatori - fascia 2P",
+        "meta": {
+          "tool": "rank_collectors_by_band",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30",
+            "fasce": [
+              "2P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 424,
+          "excluded": {
+            "total": 6,
+            "byReason": {
+              "NO_INITIAL_EXPOSURE": 4,
+              "BAND_UNKNOWN": 2
+            }
+          },
+          "seed": 20261013
+        },
+        "bands": [
+          {
+            "fascia": "2P",
+            "ties": [
+              [
+                "PHONICA",
+                "TELECOM"
+              ]
+            ],
+            "items": [
+              {
+                "collector": "PHONICA",
+                "n": 210,
+                "index": 1.05,
+                "ci": [
+                  0.92,
+                  1.19
+                ],
+                "label": "IN_LINE"
+              },
+              {
+                "collector": "TELECOM",
+                "n": 174,
+                "index": 1.02,
+                "ci": [
+                  0.88,
+                  1.16
+                ],
+                "label": "IN_LINE"
+              },
+              {
+                "collector": "FIDES",
+                "n": 22,
+                "label": "INSUFFICIENT_DATA"
+              },
+              {
+                "collector": "CRIBIS",
+                "n": 18,
+                "label": "INSUFFICIENT_DATA"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "suggestedFollowUps": [
+      "Mostrami la heatmap recuperatore per fascia",
+      "Qual è la situazione delle 1P?"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:45:02Z",
+      "completedAt": "2026-10-13T09:45:07Z"
+    }
+  }
+}

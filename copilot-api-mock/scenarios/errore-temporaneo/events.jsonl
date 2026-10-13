@@ -1,0 +1,4 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"status","seq":1,"data":{"phase":"TOOL_RUNNING","label":"Sto riepilogando il portafoglio...","tool":"get_portfolio_summary"}}
+{"event":"error","seq":2,"data":{"type":"https://errors.collection-copilot/service-unavailable","title":"Servizio temporaneamente non disponibile","status":503,"detail":"Il motore di analisi non ha risposto in tempo. Riprova tra qualche istante.","correlationId":"9b1d0f44","retryable":true}}
+{"event":"done","seq":3,"data":{"requestId":"r-errore-temporaneo","status":"FAILED","correlationId":"9b1d0f44"}}

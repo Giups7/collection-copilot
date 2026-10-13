@@ -86,10 +86,9 @@ function buildXlsx(): Buffer {
   });
 }
 
-/** File di esempio noti (id come nei blocchi file degli scenari). */
-export function mockFiles(): Map<string, MockFile> {
-  return new Map<string, MockFile>([
-    ['f-20261013-001', { contentType: PDF_TYPE, filename: 'report-performance-2026-10-13.pdf', body: buildPdf() }],
-    ['f-20261013-002', { contentType: XLSX_TYPE, filename: 'report-performance-2026-10-13.xlsx', body: buildXlsx() }],
-  ]);
+/** Corpo deterministico di un file mock del formato indicato. */
+export function buildFile(format: 'PDF' | 'XLSX', filename: string): MockFile {
+  return format === 'PDF'
+    ? { contentType: PDF_TYPE, filename, body: buildPdf() }
+    : { contentType: XLSX_TYPE, filename, body: buildXlsx() };
 }
