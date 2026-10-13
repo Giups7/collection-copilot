@@ -26,6 +26,7 @@ Il main agent pianifica, decide, delega e tiene aggiornati Jira e Confluence. Il
 | `contracts-keeper` | sonnet | modificare o estendere i contratti |
 | `reviewer` | sonnet | rivedere un diff rispetto a contratti e ATF (sola lettura) |
 | `atlassian-scribe` | haiku | commenti, transizioni Jira, piccoli aggiornamenti Confluence |
+| `docs-writer` | sonnet | note di rilascio e manuale d'uso su Confluence (pagine 14 e 15) |
 
 Per una story completa: `/story KAN-xx`.
 

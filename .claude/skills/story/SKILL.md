@@ -12,5 +12,6 @@ Story da lavorare: $ARGUMENTS
 4. Delega la verifica a `reviewer` con lo stesso brief. Se il verdetto è DA CORREGGERE, rimanda i rilievi all'agente che ha scritto il codice. Al massimo due giri, poi riporta all'utente.
 5. Mostra all'utente un riepilogo breve (cosa è stato fatto, test, punti aperti) e chiedi conferma per il commit.
 6. Dopo il commit, tramite `atlassian-scribe`: commento sulla story con commit e file principali, transizione a Test (41).
+7. Se la story cambia comportamento visibile o modalità d'uso, delega a `docs-writer` l'aggiornamento di note di rilascio e manuale d'uso, indicando commit e story.
 
 Il push va fatto solo se l'utente lo chiede.
