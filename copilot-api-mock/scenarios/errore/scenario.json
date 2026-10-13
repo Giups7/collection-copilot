@@ -1,0 +1,29 @@
+{
+  "id": "errore",
+  "description": "Richiesta rifiutata per perimetro non autorizzato (stream con evento error, esito FAILED).",
+  "keywords": [
+    "errore",
+    "non autorizzato",
+    "vietato"
+  ],
+  "result": {
+    "requestId": "r-789",
+    "conversationId": "c-123",
+    "status": "FAILED",
+    "error": {
+      "type": "https://errors.collection-copilot/insufficient-scope",
+      "title": "Perimetro non autorizzato",
+      "status": 403,
+      "detail": "L'utente non ha accesso ai dati della banca richiesta.",
+      "correlationId": "9b1d0f44",
+      "retryable": false
+    },
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "9b1d0f44",
+      "createdAt": "2026-10-13T09:20:00Z",
+      "completedAt": "2026-10-13T09:20:01Z"
+    }
+  }
+}

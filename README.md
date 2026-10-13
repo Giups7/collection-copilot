@@ -5,7 +5,7 @@ Assistente AI di analisi (sola lettura) per Collection / NPL. Documentazione: Co
 | Modulo | Stato | Descrizione |
 |---|---|---|
 | `contracts/` | v1.0 | Copilot API (OpenAPI), blocchi UI, eventi SSE, tool MCP (JSON Schema) |
-| `copilot-api-mock/` | da fare (E3) | Mock del motore AI per sviluppare le UI |
+| `copilot-api-mock/` | in corso (E3) | Mock del motore AI per sviluppare le UI |
 | `analytics-engine/` | da fare (E6) | Calcoli statistici deterministici |
 | `mcp-mock/` | da fare (E7) | Tool di analisi su dataset sintetico |
 | `orchestrator/` | da fare (E8) | Copilot API reale + agente |

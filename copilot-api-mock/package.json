@@ -1,0 +1,20 @@
+{
+  "name": "@collection-copilot/copilot-api-mock",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mock a scenari della Copilot API v1 (nessun LLM, nessun database).",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": { "node": ">=24" }
+}

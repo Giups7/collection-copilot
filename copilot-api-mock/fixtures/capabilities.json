@@ -1,0 +1,13 @@
+{
+  "contractVersion": "1.0",
+  "agentVersion": "0.1.0",
+  "blockTypes": ["kpi", "chart", "table", "timeline", "heatmap", "ranking", "insightList", "whatIf", "file"],
+  "suggestedPrompts": [
+    { "label": "Andamento portafoglio", "message": "Come sta andando il portafoglio quest'anno?" },
+    { "label": "Migliori per fascia", "message": "Chi performa meglio in ciascuna fascia?" },
+    { "label": "Strategie", "message": "Cosa mi consigli per migliorare il recupero sulle 2P?" },
+    { "label": "Previsione", "message": "Quanto prevedi di incassare nei prossimi 3 mesi?" },
+    { "label": "Anomalie", "message": "Ci sono anomalie da controllare?" }
+  ],
+  "defaults": { "periodMonths": 12, "kpi": "RR_90", "minSample": 30 }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "classifica",
+  "description": "Classifica recuperatori per fascia (ranking) con testo in streaming.",
+  "keywords": [
+    "classifica",
+    "chi va meglio",
+    "migliori",
+    "performa",
+    "ranking"
+  ],
+  "result": {
+    "requestId": "r-456",
+    "conversationId": "c-123",
+    "status": "COMPLETED",
+    "message": "Sulle 1P, negli affidi iniziati tra ottobre 2025 e settembre 2026, **FIDES** e sopra le attese per il mix di pratiche ricevuto (indice 1,18; intervallo 1,07-1,29; 412 affidi). PHONICA e in linea (1,01), TELECOM e sotto le attese (0,86). Vedi INS-014.",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "ranking",
+        "title": "Classifica recuperatori - fascia 1P",
+        "meta": {
+          "tool": "rank_collectors_by_band",
+          "asOf": "2026-10-12",
+          "scope": {
+            "from": "2025-10-01",
+            "to": "2026-09-30",
+            "fasce": [
+              "1P"
+            ]
+          },
+          "kpi": "RR_90",
+          "kpiVersion": "1.0",
+          "n": 1365,
+          "excluded": {
+            "total": 23,
+            "byReason": {
+              "NO_INITIAL_EXPOSURE": 15,
+              "BAND_UNKNOWN": 8
+            }
+          },
+          "seed": 20261013
+        },
+        "bands": [
+          {
+            "fascia": "1P",
+            "items": [
+              {
+                "collector": "FIDES",
+                "n": 412,
+                "index": 1.18,
+                "ci": [
+                  1.07,
+                  1.29
+                ],
+                "label": "ABOVE"
+              },
+              {
+                "collector": "PHONICA",
+                "n": 655,
+                "index": 1.01,
+                "ci": [
+                  0.94,
+                  1.08
+                ],
+                "label": "IN_LINE"
+              },
+              {
+                "collector": "TELECOM",
+                "n": 298,
+                "index": 0.86,
+                "ci": [
+                  0.76,
+                  0.95
+                ],
+                "label": "BELOW"
+              }
+            ],
+            "ties": []
+          }
+        ]
+      }
+    ],
+    "insightRefs": [
+      "INS-014"
+    ],
+    "suggestedFollowUps": [
+      "Perche TELECOM e sotto le attese sulle 1P?",
+      "Mostrami le curve di recupero delle 1P"
+    ],
+    "meta": {
+      "contractVersion": "1.0",
+      "agentVersion": "0.1.0",
+      "correlationId": "7f3a9c2e",
+      "createdAt": "2026-10-13T09:15:02Z",
+      "completedAt": "2026-10-13T09:15:09Z"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{"event":"status","seq":0,"data":{"phase":"UNDERSTANDING","label":"Sto analizzando la domanda..."}}
+{"event":"error","seq":1,"data":{"type":"https://errors.collection-copilot/insufficient-scope","title":"Perimetro non autorizzato","status":403,"detail":"L'utente non ha accesso ai dati della banca richiesta.","correlationId":"9b1d0f44","retryable":false}}
+{"event":"done","seq":2,"data":{"requestId":"r-789","status":"FAILED","correlationId":"9b1d0f44"}}
