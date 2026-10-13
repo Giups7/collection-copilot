@@ -1,0 +1,20 @@
+{
+  "name": "@collection-copilot/analytics-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Libreria di calcolo deterministica: dataset sintetico di affidi e KPI del catalogo (nessun server, nessun I/O di rete).",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "generate": "node src/generate-cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": { "node": ">=24" }
+}

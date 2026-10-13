@@ -1,0 +1,4 @@
+node_modules
+dist
+# dataset generato (> 1 MB), si rigenera con `npm run generate`
+data/
