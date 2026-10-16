@@ -28,7 +28,21 @@ Il main agent pianifica, decide, delega e tiene aggiornati Jira e Confluence. Il
 | `contracts-keeper` | sonnet | modificare o estendere i contratti |
 | `reviewer` | sonnet | rivedere un diff rispetto a contratti e ATF (sola lettura) |
 | `atlassian-scribe` | haiku | commenti, transizioni Jira, piccoli aggiornamenti Confluence |
-| `docs-writer` | sonnet | note di rilascio e manuale d'uso su Confluence (pagine 14 e 15) |
+| `docs-writer` | sonnet | note di rilascio, manuale d'uso e guida utente su Confluence (pagine 14, 15, 16) |
+
+Specialisti presi da ECC (https://github.com/affaan-m/ECC, v2.2.3, licenza MIT in `.claude/ECC-LICENSE`), copiati senza hook:
+
+| Agente | Modello | Quando |
+|---|---|---|
+| `architect` | opus | scelte di architettura importanti (es. orchestrator, integrazione Oracle, autenticazione). Costoso: solo per decisioni, non per il lavoro quotidiano |
+| `security-reviewer` | sonnet | dopo codice che tocca autenticazione, input utente, segreti, endpoint, dati personali |
+| `typescript-reviewer` | sonnet | qualità TypeScript (tipi, async, sicurezza Node), in aggiunta a `reviewer` che controlla contratti e story |
+| `silent-failure-hunter` | sonnet | errori ingoiati e fallback sbagliati, soprattutto nei calcoli e nell'orchestrator |
+| `a11y-architect` | sonnet | accessibilità della UI (WCAG 2.2) |
+
+Skill ECC disponibili: `api-design`, `mcp-server-patterns`, `agent-security-hardening` (agente LLM: input non fidati, tool, prompt injection), `angular-developer`, `design-system`, `accessibility`. Gli esempi delle skill possono citare framework diversi dal nostro (Next.js, Zod, Supabase): valgono i principi, non le librerie.
+
+Le decisioni restano nel decision log su Confluence (non si usano ADR nel repo).
 
 Per una story completa: `/story KAN-xx`.
 
